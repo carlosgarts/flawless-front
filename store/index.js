@@ -1,0 +1,15 @@
+// store/index.js
+
+export const getters = {
+  isAuthenticated(state) {
+    return state.auth.loggedIn
+  },
+
+  loggedInUser(state) {
+    return state.auth.user
+  },
+
+  apiToken(state) {
+    return state.auth.token
+  }
+}
