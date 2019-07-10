@@ -11,7 +11,7 @@
     <!--movile-nav-->
     <nav class="movile-nav" v-bind:class="{toggled}" role="navigation">
       <ul>
-        <!-- <li v-if="isAuthenticated"><span @click="toggled = !toggled"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></span></li> -->
+        <li v-if="isAuthenticated"><span @click="toggled = !toggled"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/">PRINCIPAL</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/about-me">NOSOTROS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/productos">PRODUCTOS</nuxt-link></span></li>
@@ -20,9 +20,8 @@
         <li><span @click="toggled = !toggled"><nuxt-link to="/contact-me">CONTACTO</nuxt-link></span></li>
         <li>
           <span @click="toggled = !toggled">
-            <!-- <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
-            <a @click="modalShow = !modalShow" v-else>LOGIN</a> -->
-            <a @click="modalShow = !modalShow" >LOGIN</a>
+            <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
+            <a @click="modalShow = !modalShow" v-else>LOGIN</a>
           </span>
         </li>
       </ul>
@@ -30,7 +29,7 @@
     <!--desktop-nav-->
     <nav class="desktop-nav" v-bind:class="{toggled}" role="navigation">
       <div class="nav-strip">
-        <!-- <div v-if="isAuthenticated"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></div> -->
+        <div v-if="isAuthenticated"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></div>
         <div><nuxt-link to="/">PRINCIPAL</nuxt-link></div>
         <div><nuxt-link to="/about-me">NOSOTROS</nuxt-link></div>
         <div><nuxt-link to="/productos">PRODUCTOS</nuxt-link></div>
@@ -38,9 +37,8 @@
         <div><nuxt-link to="/contact-me">SERVICIOS</nuxt-link></div>
         <div><nuxt-link to="/contact-me">CONTACTO</nuxt-link></div>
         <div>
-          <!-- <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
-          <a @click="modalShow = !modalShow" v-else>LOGIN</a> -->
-          <a @click="modalShow = !modalShow">LOGIN</a>
+          <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
+          <a @click="modalShow = !modalShow" v-else>LOGIN</a>
         </div>
       </div>
     </nav>
@@ -185,14 +183,25 @@ export default {
     async loginUser() {
 
       try {
-        var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/login', {
+          await this.$auth.loginWith('local', {
+            data: {
               email: this.login.email,
               password: this.login.password,
-              token: true
-          });
-        var apiToken = response.data.token;
-        var userData = response.data.data;
-        console.log(userData);
+              token: 'true'
+            }
+          })
+          this.modalShow = false
+          this.$router.push('/')
+
+
+        // var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/login', {
+        //       email: this.login.email,
+        //       password: this.login.password,
+        //       token: true
+        //   });
+        // var apiToken = response.data.token;
+        // var userData = response.data.data;
+        // console.log(userData);
 
         //Cookie.set('name', 'value', { expires: 7 });
         //var varsu =  Cookie.get('name');
@@ -208,17 +217,6 @@ export default {
         //     console.log('No es mentira');
         //     console.log(Token);
         //   }
-
-
-      //   await this.$auth.loginWith('local', {
-      //     data: {
-      //       email: this.login.email,
-      //       password: this.login.password,
-      //       token: 'true'
-      //     }
-      //   })
-      //   this.modalShow = false
-      //   this.$router.push('/')
       } catch (e) {
          this.login.error = e.response.data.message
        }
@@ -241,7 +239,7 @@ export default {
   },
 
     async logout() {
-      // await this.$auth.logout();
+      await this.$auth.logout();
     }
   },
 

@@ -6,7 +6,7 @@
       </div>
       <ul class="list" v-if="chosenOne != null">
         <li v-for="appointment in Appointments" class="appointment" v-bind:class="{chosenOne: chosenOne.id === appointment.id}" @click="chosenOne = appointment">
-          <button type="button" name="button" @click="deleteAppointment(appointment.id)"><i class="material-icons">clear</i></button>
+          <button v-if="appointment.confirmed == 0" type="button" name="button" @click="deleteAppointment(appointment.id)"><i class="material-icons">clear</i></button>
           <div class="date">
             <p>Cita Para {{appointment.start_time}}</p>
           </div>
@@ -62,15 +62,15 @@ export default {
   methods: {
     deleteAppointment: async function(delId) {
       try {
-        var Response = await this.$axios.post('DeleteAppointment', {
+        var Response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/DeleteAppointment', {
             id: delId
         });
         if (Response.data.status === 'succes') {
           console.log('Borrado');
           try {
             const id = this.loggedInUser.id;
-            var Appointments = await this.$axios.post('ShowAppointment', {
-                user_id: id
+            var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+                customer_id: id
             });
             this.Appointments = Appointments.data;
             this.chosenOne = Appointments.data[0];
@@ -91,8 +91,8 @@ export default {
     updateAppointments: async function() {
       try {
         const id = this.loggedInUser.id;
-        var Appointments = await this.$axios.post('ShowAppointment', {
-            user_id: id
+        var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+            customer_id: id
         });
         this.Appointments = Appointments.data;
         this.chosenOne = Appointments.data[0];
@@ -107,8 +107,8 @@ export default {
   mounted: async function () {
     try {
       const id = this.loggedInUser.id;
-      var Appointments = await this.$axios.post('ShowAppointment', {
-          user_id: id
+      var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+          customer_id: id
       });
       this.Appointments = Appointments.data;
       this.chosenOne = Appointments.data[0];
@@ -169,6 +169,7 @@ li {
 }
 
 .appointment {
+  min-height: 50px;
   transition: 0.5s;
   display: flex;
   align-items: center;

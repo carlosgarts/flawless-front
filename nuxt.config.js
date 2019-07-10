@@ -38,7 +38,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/axios',
+    '@nuxtjs/auth',
     'nuxt-material-design-icons',
     ['nuxt-vue-material', {
       css: true,
@@ -50,6 +50,20 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+
+  auth: {
+    strategies: {
+    local: {
+      endpoints: {
+        login: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/login', method: 'post', propertyName: 'token' },
+        logout: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/logout', method: 'get' },
+        user: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/get', method: 'get', propertyName: 'data' }
+        },
+      tokenRequired: true,
+      tokenType: 'bearer'
+      }
+    }
   },
   /*
   ** Build configuration

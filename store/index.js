@@ -7,9 +7,5 @@ export const getters = {
 
   loggedInUser(state) {
     return state.auth.user
-  },
-
-  apiToken(state) {
-    return state.auth.token
   }
 }

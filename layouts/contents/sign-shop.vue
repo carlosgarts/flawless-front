@@ -2,7 +2,7 @@
   <div class="sign-grid">
     <div class="sign">
       <img src="@/assets/promotions/01.jpg" alt="Shop">
-      <div class="text">COMPRA YA</div>
+      <div class="text">NUESTROS PRODUCTOS</div>
     </div>
     <div class="sign">
       <img src="@/assets/promotions/02.jpg" alt="Sign">

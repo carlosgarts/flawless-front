@@ -32,13 +32,14 @@
               <img class="ticket-logo" src="@/assets/logo.png" alt="be flawless">
             </div>
             <div class="slogan">
-              YOU HAVE AN APPOINTMENT TO LOOK &amp; FEEL FLAWLESS
+              TIENES UNA CITA PARA <br> VERTE Y SENTIRTE FLAWLESS
             </div>
             <div class="name">
-              {{loggedInUser.name}} {{loggedInUser.last_name}}
+              {{loggedInUser.name}}
             </div>
             <div class="date">
-              <i class="material-icons">today</i><span>Dia</span>:  {{date}}   <i class="material-icons">timer</i><span>Hora</span>: {{time}}
+              <!-- <i class="material-icons">today</i>  {{date}}   <i class="material-icons">timer</i> {{time}} -->
+              <img class="time-icon" src="@/assets/ticket/calendar.png"> {{date}}   <img class="time-icon" src="@/assets/ticket/clock.png"> {{time}}
             </div>
             <!-- <div class="comment">
               {{appointment.comments}}
@@ -102,9 +103,7 @@ export default {
   margin-right: auto;
   position: absolute;
   color: white;
-  padding-left: 40px;
-  padding-right: 40px;
-  width: 225px;
+  width: 230px;
   height: 120px;
   border-left: 4px white dotted;
   border-right: 4px white dotted;
@@ -120,10 +119,10 @@ export default {
 .logo-holder {
   position: absolute;
   left: 90px;
-  top: -15px;
+  top: -10px;
   @media (min-width: 762px) {
     left: 175px;
-    top: -32px;
+    top: -25px;
   }
 }
 
@@ -135,13 +134,17 @@ export default {
 }
 
 .slogan {
-  font-size: 9px;
+  font-size: 5px;
   line-height: 12px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left;
+  position: absolute;
+  left: 22px;
+  top: 5px;
+  line-height: 10px;
   @media (min-width: 762px) {
-    width: 180px;
-    font-size: 12px;
+    left: 40px;
+    width: 150px;
+    font-size: 10px;
     line-height: 16px;
   }
 }
@@ -151,12 +154,12 @@ export default {
   justify-content: center;
   align-items: center;
   font-family: 'Salwa';
-  font-size: 23px;
-  height: 50px;
+  font-size: 27px;
+  height: 65px;
   line-height: 50px;
   @media (min-width: 762px) {
-    font-size: 40px;
-    height: 110px;
+    font-size: 47px;
+    height: 150px;
     line-height: 50px;
   }
 }
@@ -172,20 +175,22 @@ export default {
     margin-bottom: 10px;
     font-size: 12px;
   }
-  i {
-    font-size: 12px;
-    margin-left: 5px;
-    @media (min-width: 762px) {
-      font-size: 16px;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
   span {
     display: none;
     @media (min-width: 762px) {
       display: inline;
     }
+  }
+}
+
+.time-icon {
+  width: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  @media (min-width: 762px) {
+    width: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 

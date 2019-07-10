@@ -4,25 +4,43 @@
       <label class="adder" for="timepicker">+</label>
       <md-tooltip md-direction="right">Nueva Reservación</md-tooltip>
     </div>
-
-    <datetime input-id="timepicker" class="theme-pink" type="datetime" v-model="datetime" :phrases="{ok: 'Continuar', cancel: 'Salir'}" format="yyyy-MM-dd HH:mm:ss" auto></datetime>
+    <datetime input-id="timepicker" class="theme-pink" type="datetime" v-model="datetime" :minute-step="10" :phrases="{ok: 'Continuar', cancel: 'Salir'}" :min-datetime="minDatetime" value-zone="America/Caracas" zone="America/Caracas" use12-hour format="yyyy-MM-dd H:i:s" auto></datetime>
     <transition name="fade">
     <div class="modal-comment" v-if="modalShow">
       <div class="background" @click="resetDate()">
       </div>
       <div class="vdatetime-popup vdatetime theme-pink">
         <div class="vdatetime-popup__header">
-          Something to Add?
+          Elige un servicio
         </div>
         <div class="comment">
           <md-field>
-            <label>Comments and petitions</label>
+          <label for="groups">Grupo</label>
+          <md-select v-model="groupId" name="groups" id="groups">
+            <md-option v-for="grupo in groupData.data.grupos" :value="grupo.id">{{grupo.name}}</md-option>
+          </md-select>
+        </md-field>
+        </div>
+        <div v-if="groupId != '' && filterService != '' " class="comment">
+          <md-field>
+          <label for="services">Servicio</label>
+          <md-select v-model="serviceId" name="services" id="services">
+            <md-option v-for="servicio in filterService" :value="servicio.id">{{servicio.name}}</md-option>
+          </md-select>
+        </md-field>
+        </div>
+
+        <div class="available" v-html="available"></div>
+
+        <div class="comment">
+          <md-field>
+            <label>Comentarios y peticiones</label>
             <md-textarea v-model="comment" md-autogrow md-counter="200"></md-textarea>
           </md-field>
         </div>
         <div class="vdatetime-popup__actions">
           <button class="vdatetime-popup__actions__button vdatetime-popup__actions__button--cancel" type="button" name="button" @click="resetDate()">Salir</button>
-          <button class="vdatetime-popup__actions__button vdatetime-popup__actions__button--cancel" type="button" name="button" @click="createAppointment()">Continuar</button>
+          <button class="vdatetime-popup__actions__button vdatetime-popup__actions__button--cancel" type="button" name="button" @click="createAppointment()" :disabled="!allow">Continuar</button>
         </div>
       </div>
     </div>
@@ -40,18 +58,53 @@ export default {
       datetime: '',
       comment: '',
       modalShow: false,
+      groupData: [],
+      serviceData: [],
+      groupId: '',
+      serviceId: '',
+      minDatetime: new Date().toISOString().slice(0,10),
+      available: '',
+      allow: false
     }
   },
   computed: {
-        ...mapGetters(['isAuthenticated', 'loggedInUser'])
-      },
+    ...mapGetters(['isAuthenticated', 'loggedInUser']),
+    filterService: function () {
+      return this.serviceData.filter(item => {
+        return item.group_id == this.groupId
+      })
+    }
+  },
   watch: {
     datetime: function() {
       if (this.datetime != '') {
         this.modalShow = true;
       }
+    },
+    serviceId: async function() {
+      this.available = '';
+      this.allow = false;
+      if(this.serviceId != ''){
+        var startTime = this.datetime;
+        var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/disponible', {
+            service_id: this.serviceId,
+            start_time: startTime.slice(0, 19).replace('T', ' ')
+        });
+        if (response.data.response == 'free') {
+          this.available = "<p style='color: #4BB543'>Disponible</p>";
+          this.allow = true;
+        }
+        else
+        {
+          this.available = "<p style='color: #FF9494'>Lo lamentamos, cita ocupada, intente otra hora</p>";
+        }
+      }
+    },
+    groupId: function() {
+      this.serviceId = '';
     }
   },
+
   methods: {
     resetDate: function() {
       this.datetime = '';
@@ -59,20 +112,23 @@ export default {
     },
     createAppointment: async function() {
       var idUser = this.loggedInUser.id;
-      var startTime = this.datetime;
+      var startTime = this.datetime.slice(0, 19).replace('T', ' ');
       var comment = this.comment;
-      startTime = startTime.slice(0, 19).replace('T', ' ');
       try {
-        var Response = await this.$axios.post('CreateAppointment', {
-            id_user: idUser,
-            start: startTime,
+        var Response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/CreateAppointment', {
+            customer_id: idUser,
+            service_id: this.serviceId,
+            start_time: startTime,
             comments: comment
         });
-        if (Response.data.status === 'succes') {
+        if (Response.data.status == 'succes') {
           console.log('exito');
           this.datetime = '';
           this.modalShow = false;
           this.comment = '';
+          this.available = '';
+          this.serviceId = '',
+          this.allow = false;
           this.$bus.$emit('new-appointment');
         }
         else {
@@ -81,13 +137,40 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    checkRoom: async function() {
+      var idUser = this.loggedInUser.id;
+      var startTime = this.datetime;
+      var comment = this.comment;
+      startTime = startTime.slice(0, 19).replace('T', ' ');
+      try {
+        var Response = await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/disponible', {
+            service_id: idUser,
+            star_time: startTime
+        });
+        if (Response.data.response === 'free') {
+          //Allow
+        }
+        else {
+          //Disallow
+        }
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
+  mounted: async function(){
+    this.groupData =  await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/servicios');
+    this.serviceData = this.groupData.data.servicios;
+  }
 }
 </script>
 
 <style lang="less">
 
+.available{
+  margin: 0;
+}
 .vdatetime-input {
   display: none;
 }
@@ -102,7 +185,10 @@ export default {
 .theme-pink .vdatetime-time-picker__item--selected,
 .theme-pink .vdatetime-popup__actions__button {
   color: pink;
+
+  &:hover, &:disabled {color:lightgray;}
 }
+
 
 :root {
     --md-theme-default-primary: #ff80ab;
@@ -112,6 +198,10 @@ export default {
 
 .vdatetime-popup__header {
   background-color: pink;
+}
+
+.md-menu-content.md-select-menu {
+  z-index: 1100;
 }
 
 .comment {
