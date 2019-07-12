@@ -22,7 +22,7 @@
         </md-field>
         </div>
         <div v-if="groupId != '' && filterService != '' " class="comment">
-          <md-field>
+        <md-field>
           <label for="services">Servicio</label>
           <md-select v-model="serviceId" name="services" id="services">
             <md-option v-for="servicio in filterService" :value="servicio.id">{{servicio.name}}</md-option>

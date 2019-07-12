@@ -1,10 +1,14 @@
 <template>
   <div class="sign-grid">
-    <div class="sign">
+    <div class="sign" v-on:click="openProducts">
       <img src="@/assets/promotions/01.jpg" alt="Shop">
       <div class="text">NUESTROS PRODUCTOS</div>
     </div>
-    <div class="sign">
+    <div class="sign" v-on:click="openAppointments" v-if="isAuthenticated">
+      <img src="@/assets/promotions/02.jpg" alt="Sign">
+      <div class="text">RESERVA TU CITA</div>
+    </div>
+    <div class="sign" v-on:click="openRegister" v-else>
       <img src="@/assets/promotions/02.jpg" alt="Sign">
       <div class="text">REGISTRATE Y LLEVA UN REGALO</div>
     </div>
@@ -12,8 +16,25 @@
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex';
 
+export default {
+  computed: {
+  ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+  methods: {
+    openRegister: function () {
+      if (this.isAuthenticated == false) {
+        this.$bus.$emit('register-please');
+      }
+    },
+    openAppointments: function () {
+      this.$router.push('/reservas')
+    },
+    openProducts: function () {
+      this.$router.push('/productos')
+    },
+  }
 }
 </script>
 
@@ -27,12 +48,18 @@ export default {
 }
 
 .sign {
+  transition: .5s;
   width: 100%;
   height: 350px;
   display: flex;
   margin: 0;
   padding: 0;
   position: relative;
+  cursor: pointer;
+  &:hover{
+    -webkit-animation: filter-animation 15s infinite;
+    animation: filter-animation 15s infinite;
+    }
   img {
     position: absolute;
     padding: 0;
@@ -43,6 +70,7 @@ export default {
     z-index: -1;
   }
 }
+
 .text {
   position: relative;
   top: 35px;
@@ -62,6 +90,34 @@ export default {
   @media (min-width: 780px) {
     font-size: 2em;
     max-height: 45px;
+  }
+}
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  50% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes filter-animation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    filter: hue-rotate(360deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
   }
 }
 </style>

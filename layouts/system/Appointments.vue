@@ -2,13 +2,13 @@
   <div class="displayer">
     <div class="re-base">
       <div class="amt">
-        PROXIMAS CITAS
+        Reservaciones
       </div>
       <ul class="list" v-if="chosenOne != null">
         <li v-for="appointment in Appointments" class="appointment" v-bind:class="{chosenOne: chosenOne.id === appointment.id}" @click="chosenOne = appointment">
           <button v-if="appointment.confirmed == 0" type="button" name="button" @click="deleteAppointment(appointment.id)"><i class="material-icons">clear</i></button>
           <div class="date">
-            <p>Cita Para {{appointment.start_time}}</p>
+            <p>Reservación Para {{theMoment(appointment.start_time)}}</p>
           </div>
         </li>
       </ul>
@@ -25,6 +25,7 @@
 import Reserve from '~/layouts/system/reserve.vue'
 import Tickets from '~/layouts/system/tickets.vue'
 import { mapGetters } from 'vuex'
+import moment from 'moment'
 
 export default {
   components: {
@@ -66,7 +67,6 @@ export default {
             id: delId
         });
         if (Response.data.status === 'succes') {
-          console.log('Borrado');
           try {
             const id = this.loggedInUser.id;
             var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
@@ -102,6 +102,10 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    theMoment: function (date) {
+      var twelveTime = moment(date, 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY LT');
+      return twelveTime;
     }
   },
   mounted: async function () {
@@ -135,9 +139,12 @@ font-family: 'ProximaNova';
 font-weight: bold;
 color: pink;
 margin: 20px;
-font-size: 20px;
+//font-size: 20px;
+font-size: 40px;
+height: 50px;
 border-bottom: solid pink 1px;
 padding: 10px;
+font-family: 'Salwa';
 }
 .displayer {
   display: grid;
@@ -153,7 +160,7 @@ padding: 10px;
 ul {
   margin: 0;
   padding: 0;
-  filter: drop-shadow( 0 1px 2px gray );
+  //filter: drop-shadow( 0 1px 2px gray );
 }
 li {
   padding: 0;
@@ -174,19 +181,21 @@ li {
   display: flex;
   align-items: center;
   background-color: white;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%);
+  background: linear-gradient(90deg, #e8e8e8 0%, #e8e8e81 0%);
+  //background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%);
   //box-shadow: 1px 1px 5px gray;
   //margin: 5px;
   margin-left: 20px;
   margin-right: 15px;
+  cursor: pointer;
   button {
     transition: 0.5s;
     cursor: pointer;
-    color: lightgray;
+    color: white;
     width: 40px;
     height: 40px;
     background-color: transparent;
-    border: lightgray solid 1px;
+    border: white solid 1px;
     border-radius: 50%;
     margin: 5px;
   }
@@ -197,7 +206,7 @@ li {
   .date {
     margin: 0;
     p {
-      color: lightcoral;
+      color: gray;
       font-size: 10px;
       @media (min-width: 1050px) {
         font-size: 13px;
@@ -208,9 +217,18 @@ li {
 
 .chosenOne {
   background: white;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,201,201,1) 100%);
+  background: linear-gradient(90deg, rgba(255,201,201,1) 0%, rgba(255,201,201,1) 100%);
+  //background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,201,201,1) 100%);
   @media (min-width: 900px) {
     transform: translateX(20px);
+  }
+  .date {
+    p {
+      color: lightcoral;
+    }
+  }
+  button:hover {
+    background-color: lightcoral;
   }
 }
 

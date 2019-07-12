@@ -30,7 +30,6 @@ export default {
   plugins: [
     { src: '~/plugins/bus'},
     { src: '~/plugins/vue-datetime.js', ssr: false },
-    { src: '~/plugins/vue-notifications'}
   ],
   /*
   ** Nuxt.js modules
@@ -63,6 +62,12 @@ export default {
       tokenRequired: true,
       tokenType: 'bearer'
       }
+    },
+    redirect: {
+    login: '/',
+    logout: '/',
+    callback: '/',
+    home: '/'
     }
   },
   /*

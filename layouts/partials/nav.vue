@@ -11,7 +11,7 @@
     <!--movile-nav-->
     <nav class="movile-nav" v-bind:class="{toggled}" role="navigation">
       <ul>
-        <li v-if="isAuthenticated"><span @click="toggled = !toggled"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></span></li>
+        <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/usuario">{{ loggedInUser.first_name.toUpperCase() }}</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/">PRINCIPAL</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/about-me">NOSOTROS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/productos">PRODUCTOS</nuxt-link></span></li>
@@ -29,7 +29,7 @@
     <!--desktop-nav-->
     <nav class="desktop-nav" v-bind:class="{toggled}" role="navigation">
       <div class="nav-strip">
-        <div v-if="isAuthenticated"><a>{{ loggedInUser.first_name.toUpperCase() }}</a></div>
+        <div v-if="isAuthenticated"><nuxt-link to="/usuario">{{ loggedInUser.first_name.toUpperCase() }}</nuxt-link></div>
         <div><nuxt-link to="/">PRINCIPAL</nuxt-link></div>
         <div><nuxt-link to="/about-me">NOSOTROS</nuxt-link></div>
         <div><nuxt-link to="/productos">PRODUCTOS</nuxt-link></div>
@@ -55,9 +55,6 @@
             <button v-bind:class="{ active: modalMode === 'forgot' }" type="button" name="button" @click="modalMode = 'forgot'">Recuperar</button>
           </div>
             <form class="login form" method="get" @submit.prevent="loginUser" v-if="modalMode === 'login'">
-              <div class="error">
-                {{login.error}}
-              </div>
               <md-field>
                 <label>E-mail</label>
                 <md-input v-model="login.email"></md-input>
@@ -66,13 +63,13 @@
                 <label>Contraseña</label>
                 <md-input v-model="login.password" type="password"></md-input>
               </md-field>
+              <div class="error">
+                {{login.error}}
+              </div>
               <button type="submit" name="submit">OK</button>
               <!-- <p>¿Olvidaste tu contraseña? <a @click="modalMode = 'forgot'">presiona aqui</a></p> -->
             </form>
             <form class="signin form" method="post"  @submit.prevent="registerUser" v-if="modalMode === 'signin'">
-              <div class="error">
-                {{register.error}}
-              </div>
               <md-field>
                 <label>E-mail</label>
                 <md-input v-model="register.email"></md-input>
@@ -86,25 +83,28 @@
                 <md-input v-model="register.last_name"></md-input>
               </md-field>
               <md-field>
-                <label>Teléfonos</label>
+                <label>Teléfono</label>
                 <md-input v-model="register.phone"></md-input>
               </md-field>
               <md-field>
                 <label>Contraseña</label>
-                <md-input v-model="recover.password" type="password"></md-input>
+                <md-input v-model="register.password" type="password"></md-input>
               </md-field>
+              <div class="error">
+                {{register.error}}
+              </div>
               <button type="submit" name="submit">REGISTRARSE</button>
               <!-- <p>¿Olvidaste tu contraseña? <a @click="modalMode = 'forgot'">presiona aqui</a></p> -->
             </form>
             <form class="forgot form" method="post" @submit.prevent="recoverPassword" v-if="modalMode === 'forgot'">
-              <div class="error">
-                {{recover.error}}
-              </div>
               <md-field>
                 <label>E-mail</label>
                 <md-input v-model="recover.email"></md-input>
                 <span class="md-helper-text">Se te enviara un correo para que puedas recuperar tu clave.</span>
               </md-field>
+              <div class="error">
+                {{recover.error}}
+              </div>
               <button type="submit" class="forget" name="submit">ENVIAR</button>
             </form>
         </div>
@@ -157,31 +157,37 @@ export default {
   },
   methods: {
     async registerUser() {
-    try {
-      // await this.$axios.post('customer/register', {
-      //     email: this.register.email,
-      //     first_name: this.register.first_name,
-      //     last_name: this.register.last_name,
-      //     phone: this.register.phone,
-      //     password: this.register.password,
-      //     password_confirmation: this.register.password
-      // })
-      //
-      // await this.$auth.loginWith('local', {
-      //     email: this.register.email,
-      //     password: this.register.password,
-      //     token: 'true'
-      // })
-      // console.log(this.$auth.loggedIn);
-      // this.modalShow = false
-      // this.$router.push('/')
-    } catch (e) {
-      this.register.error = e.response.data.message
+      if (this.checkForm()) {
+          try {
+            var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/register', {
+                email: this.register.email,
+                first_name: this.register.first_name,
+                last_name: this.register.last_name,
+                phone: this.register.phone,
+                password: this.register.password,
+                password_confirmation: this.register.password
+            })
+
+            if (response.data.message == "Your account has been created successfully.") {
+              await this.$auth.loginWith('local', {
+                data: {
+                  email: this.register.email,
+                  password: this.register.password,
+                  token: 'true'
+                }
+              });
+              this.modalShow = false
+              this.$router.push('/')
+            } else {
+              this.register.error = "Este correo pertenece a otro usuario";
+            }
+          } catch (e) {
+            this.register.error = e.response.data.message
+            }
       }
     },
 
     async loginUser() {
-
       try {
           await this.$auth.loginWith('local', {
             data: {
@@ -189,64 +195,102 @@ export default {
               password: this.login.password,
               token: 'true'
             }
-          })
-          this.modalShow = false
-          this.$router.push('/')
-
-
-        // var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/login', {
-        //       email: this.login.email,
-        //       password: this.login.password,
-        //       token: true
-        //   });
-        // var apiToken = response.data.token;
-        // var userData = response.data.data;
-        // console.log(userData);
-
-        //Cookie.set('name', 'value', { expires: 7 });
-        //var varsu =  Cookie.get('name');
-        //console.log(varsu);
-        //Cookie.remove('name');
-
-
-        // var Token = Cookie.get('flawless_small_token');
-        //
-        //   if(Token !== undefined) {
-        //     console.log('Mentira');
-        //   } else {
-        //     console.log('No es mentira');
-        //     console.log(Token);
-        //   }
+          });
       } catch (e) {
          this.login.error = e.response.data.message
+       }
+       if (this.isAuthenticated == false) {
+         this.login.error = 'Usuario o contraseña equivocados';
+       }
+       else if (this.isAuthenticated == true) {
+         this.login.error = '';
+         this.login.email = '';
+         this.login.password = '';
+         this.modalShow = false;
+         this.$router.push('/');
        }
     },
 
     async recoverPassword() {
-    // try {
-    //   response = await this.$axios.post('customer/forgot-password', {
-    //       email: this.recover.email
-    //   })
-    //   this.$notify({
-    //     group: 'foo',
-    //     title: 'Important message',
-    //     text: 'Su link de reinicio fue enviado a tu correo'
-    //   });
-    // }
-    //  catch (e) {
-    //   this.register.error = e.response.data.message
-    // }
+    try {
+      response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/forgot-password', {
+          email: this.recover.email
+      })
+    }
+     catch (e) {
+      this.register.error = e.response.data.message
+    }
   },
 
     async logout() {
       await this.$auth.logout();
+    },
+
+    checkForm: function () {
+      this.register.error = '';
+
+      if (!this.register.email) {
+        this.register.error = 'Correo requerido.';
+        return false;
+      } else if (!this.validEmail(this.register.email)) {
+        this.register.error = 'Correo invalido.';
+        return false;
+      }
+
+      if (!this.register.first_name) {
+        this.register.error = 'Nombre Requerido';
+        return false;
+      }
+
+      if (!this.register.last_name) {
+        this.register.error = 'Apellido Requerido';
+        return false;
+      }
+
+      if (!this.register.phone) {
+        this.register.error = 'Es importante que ingrese su telefono';
+        return false;
+      }
+      else if (!this.validPhone(this.register.phone)) {
+        this.register.error = 'Telefono invalido.';
+        return false;
+      }
+
+      if (!this.register.password) {
+        this.register.error = 'Contraseña Requerida';
+        return false;
+      }
+
+      if (this.register.error === '') {
+        return true;
+      }
+    },
+
+    validPhone: function (phone) {
+      var re = /1?-?\.?\(?\d{3}[\-\)\.\s]?\d{3}[\-\.\s]?\d{4}$/;
+      return re.test(phone);
+    },
+
+    validEmail: function (email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
   },
 
+  created: function () {
+    this.$bus.$on('register-please', data => {
+            this.modalMode = 'signin';
+            this.modalShow = true;
+        });
+      }
 }
 </script>
 
 <style lang="less" scoped>
+
+.error {
+  color: #FF9494;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .1s;

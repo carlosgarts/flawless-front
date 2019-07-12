@@ -34,12 +34,12 @@
             <div class="slogan">
               TIENES UNA CITA PARA <br> VERTE Y SENTIRTE FLAWLESS
             </div>
-            <div class="name">
+            <div class="name" v-on:click="theMoment">
               {{loggedInUser.name}}
             </div>
             <div class="date">
               <!-- <i class="material-icons">today</i>  {{date}}   <i class="material-icons">timer</i> {{time}} -->
-              <img class="time-icon" src="@/assets/ticket/calendar.png"> {{date}}   <img class="time-icon" src="@/assets/ticket/clock.png"> {{time}}
+              <img class="time-icon" src="@/assets/ticket/clock.png"> {{theMoment}}  <img class="time-icon" src="@/assets/ticket/calendar.png"> {{theDay}}
             </div>
             <!-- <div class="comment">
               {{appointment.comments}}
@@ -47,13 +47,10 @@
       </div>
     </div>
     <footer>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+      <div>
+        Espera una llamada de nuestro personal dentro de las 24 horas previas a tu fecha de reservación <br>
+        Una vez confirmada su reservación solo podra cancelar la cita llamando al <i>555-55-55 </i> <br>
+        Este es un ticket digital para mostrarte la hora y fecha de tu cita, no necesitas imprimirlo, tenemos toda la informacion que necesitamos en nuestra base de datos, puedes capturar o consultar este ticket para recordar la fecha o invitar a un amigo a un dia de maravillas y ¡mucho glam!
       </div>
     </footer>
   </div>
@@ -62,6 +59,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import moment from 'moment'
 
 export default {
   props: {
@@ -69,7 +67,16 @@ export default {
       time: String,
   },
   computed: {
-      ...mapGetters(['isAuthenticated', 'loggedInUser'])
+      ...mapGetters(['isAuthenticated', 'loggedInUser']),
+      theMoment: function () {
+        var twelveTime = moment(this.time, 'HH:mm:ss').format('LT');
+        return twelveTime;
+      },
+      theDay: function () {
+        console.log(this.date);
+        var dayTime = moment(this.date, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        return dayTime;
+      }
   },
   methods: {
 
@@ -173,7 +180,7 @@ export default {
   margin-bottom: 5px;
   @media (min-width: 762px) {
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 15px;
   }
   span {
     display: none;
@@ -207,10 +214,12 @@ footer{
   div {
     margin: 10px;
     max-width: 1000px;
-    color: darkgray;
+    //color: darkgray;
+    color: #F0B4AF;
     line-height: 13px;
     @media (min-width: 762px) {
       line-height: 18px;
+      width: 600px;
     }
   }
 }
