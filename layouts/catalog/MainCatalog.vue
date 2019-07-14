@@ -4,6 +4,8 @@
       Bienvenida
     </div>
     <p class="sub-pt">AL CATALOGO DE PRODUCTOS <br> DISPONIBLES EN NUESTRA TIENDA</p>
+    <Categories/>
+    <Offers/>
     <img src="@/assets/backgrounds/goldlinesAsset.svg" alt="Sign">
     <p class="sub-pt">MARCAS ALIADAS</p>
     <div class="marcas">
@@ -19,7 +21,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Categories from '~/layouts/catalog/Categories.vue'
+import Offers from '~/layouts/catalog/Offers.vue'
+
 export default {
+  components: {
+      Categories,
+      Offers
+    },
   data: function (){
     return {
 

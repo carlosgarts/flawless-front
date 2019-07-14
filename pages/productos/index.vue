@@ -47,7 +47,7 @@ export default {
 }
 
 #usuarios {
-  background: url(../assets/backgrounds/ss-appointments.jpg);
+  background: url(../../assets/backgrounds/ss-appointments.jpg);
   background-size: cover;
 }
 
