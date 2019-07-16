@@ -1,6 +1,9 @@
 <template>
   <div>
     <Nav>
+      <div id="global-banner" class="section-banner" v-if="$route.path !== '/' " >
+        <img class="main-logo-banner" src="@/assets/logo.png" alt="be flawless">
+      </div>
       <transition name="fade">
       <nuxt/>
       </transition>
@@ -88,15 +91,21 @@ html {
 }
 
 .section-banner {
-  height: 150px;
+  height: 125px;
   background-color: pink;
   display: flex;
   align-items: center;
 }
-.main-logo {
+
+#global-banner {
+  background: url(../assets/backgrounds/ss-appointments.jpg);
+  background-size: cover;
+}
+
+.main-logo-banner {
   width: 100px;
-  position: relative;
-  left: 5%;
+  margin-left: 5%;
+  opacity: .5;
 }
 
 @import "~vue-material/dist/theme/engine"; // Import the theme engine

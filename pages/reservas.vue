@@ -1,8 +1,5 @@
 <template>
   <div class="">
-    <div id="reservas" class="section-banner">
-      <img class="main-logo" src="@/assets/logo.png" alt="be flawless">
-    </div>
   <section class="container sub-section">
     <div class="reservations">
       <Appointments/>
@@ -41,11 +38,6 @@ export default {
 
 .reservations {
   width: 100%;
-}
-
-#reservas {
-  background: url(../assets/backgrounds/ss-appointments.jpg);
-  background-size: cover;
 }
 
 </style>

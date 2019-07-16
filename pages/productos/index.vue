@@ -1,8 +1,5 @@
 <template>
   <div class="">
-    <div id="usuarios" class="section-banner">
-      <img class="main-logo" src="@/assets/logo.png" alt="be flawless">
-    </div>
   <section class="from-top container">
     <div class="products">
       <MainCatalog/>

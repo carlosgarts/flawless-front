@@ -90,7 +90,8 @@ export default {
 
             if (response.data.message == "Your account has been updated successfully.") {
               await this.$auth.logout();
-              this.$router.push('/')
+              this.$router.push('/');
+              this.$toast.success('Sus datos fueron actualizados por favor ingrese de nuevo');
             } else {
               this.update.error = "Este correo pertenece a otro usuario";
             }

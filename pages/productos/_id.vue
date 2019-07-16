@@ -1,14 +1,15 @@
 <template>
   <div class="showProducts">
-    <div id="usuarios" class="section-banner">
-      <img class="main-logo" src="@/assets/logo.png" alt="be flawless">
-    </div>
   <section class="from-top container">
+    <transition name="expand">
+      <div class="expander" v-if="isActive" v-bind:class="{ active: isActive }"></div>
+    </transition>
     <div class="go-back">
-      <div class="icon" v-on:click="$router.push('/productos')">
-        <i class="material-icons">chevron_left</i>
+      <div class="icon">
+        <i class="material-icons" v-on:click="exitAnim">chevron_left</i>
       </div>
     </div>
+
     <div class="products">
       <Products/>
     </div>
@@ -25,7 +26,17 @@ export default {
   },
   data: function(){
     return {
+      isActive: false
     }
+  },
+  methods: {
+    exitAnim: function () {
+      setTimeout( ()=>{this.isActive = true} ,10);
+      setTimeout( ()=>{this.$router.push('/productos')} ,500);
+    }
+  },
+  mounted: function () {
+    this.isActive = false;
   }
 }
 </script>
@@ -53,6 +64,17 @@ export default {
     }
 }
 
+.expander {
+  position: absolute;
+  background-color: white;
+  width: 5000px;
+  height: 5000px;
+  border-bottom-right-radius: 100%;
+  z-index: 2900;
+  border: none;
+  left: 0;
+}
+
 .go-back {
   transition: .5s;
   display: flex;
@@ -69,7 +91,14 @@ export default {
   justify-content: center;
   padding-right: 10px;
   padding-bottom: 10px;
+  border: none;
   cursor: pointer;
+
+  & .active {
+    animation: coverAll .5s ease;
+    animation-direction: reverse;
+  }
+
   @media (min-width: 650px) {
   height: 150px;
   width: 150px;
@@ -102,11 +131,6 @@ export default {
   width: 100%;
 }
 
-#usuarios {
-  background: url(../../assets/backgrounds/ss-appointments.jpg);
-  background-size: cover;
-}
-
 
 @keyframes coverAll {
   0% {
@@ -128,5 +152,13 @@ export default {
   }
 }
 
+//Leave animation
+
+.expand-enter-active {
+  animation: coverAll .5s reverse;
+}
+.expand-leave-active {
+  animation: coverAll .5s reverse;
+}
 
 </style>

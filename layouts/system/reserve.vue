@@ -130,6 +130,7 @@ export default {
           this.serviceId = '',
           this.allow = false;
           this.$bus.$emit('new-appointment');
+          this.$toast.success('Nueva cita creada, espere nuestra llamada');
         }
         else {
           console.log('fallo');

@@ -1,25 +1,27 @@
 <template>
     <div>
-      <img class="main-logo" src="@/assets/logo.png" alt="be flawless">
+      <img class="main-logo" src="@/assets/main-logo.png" alt="be flawless">
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button gold"
-        >RESERVAS</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button"
-        >NOSOTROS</a>
+        <span v-on:click="verify()"><nuxt-link to="/reservas" class="button gold">RESERVAS</nuxt-link></span>      
+        <nuxt-link to="/nosotros" class="button">NOSOTROS</nuxt-link>
       </div>
     </div>
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 export default {
   components: {
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+  methods: {
+    verify: function() {
+      if (!this.isAuthenticated) {
+        this.$toast.success('Debe iniciar sesión primero');
+      }
+    }
   }
 }
 </script>

@@ -15,7 +15,7 @@
         <li><span @click="toggled = !toggled"><nuxt-link to="/">PRINCIPAL</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/about-me">NOSOTROS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/productos">PRODUCTOS</nuxt-link></span></li>
-        <li><span @click="toggled = !toggled"><nuxt-link to="/reservas">RESERVAS</nuxt-link></span></li>
+        <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/reservas">RESERVAS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/contact-me">SERVICIOS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/contact-me">CONTACTO</nuxt-link></span></li>
         <li>
@@ -33,7 +33,7 @@
         <div><nuxt-link to="/">PRINCIPAL</nuxt-link></div>
         <div><nuxt-link to="/about-me">NOSOTROS</nuxt-link></div>
         <div><nuxt-link to="/productos">PRODUCTOS</nuxt-link></div>
-        <div><nuxt-link to="/reservas">RESERVAS</nuxt-link></div>
+        <div v-if="isAuthenticated"><nuxt-link to="/reservas">RESERVAS</nuxt-link></div>
         <div><nuxt-link to="/contact-me">SERVICIOS</nuxt-link></div>
         <div><nuxt-link to="/contact-me">CONTACTO</nuxt-link></div>
         <div>
@@ -169,6 +169,7 @@ export default {
             })
 
             if (response.data.message == "Your account has been created successfully.") {
+              this.$toast.show('Registro Exitoso...');
               await this.$auth.loginWith('local', {
                 data: {
                   email: this.register.email,
@@ -177,6 +178,7 @@ export default {
                 }
               });
               this.modalShow = false
+              this.$toast.success('Benvenid@ a Flawless online');
               this.$router.push('/')
             } else {
               this.register.error = "Este correo pertenece a otro usuario";
@@ -207,6 +209,7 @@ export default {
          this.login.email = '';
          this.login.password = '';
          this.modalShow = false;
+         this.$toast.success('Benvenid@ de vuelta');
          this.$router.push('/');
        }
     },
@@ -220,9 +223,14 @@ export default {
      catch (e) {
       this.register.error = e.response.data.message
     }
+    if (response.data.message == "We have e-mailed your password reset link!") {
+      this.$toast.success('Correo enviado');
+      this.modalShow = false;
+    }
   },
 
     async logout() {
+      this.$toast.info('Sesión cerrada');
       await this.$auth.logout();
     },
 

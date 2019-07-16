@@ -1,8 +1,5 @@
 <template>
   <div class="">
-    <div id="usuarios" class="section-banner">
-      <img class="main-logo" src="@/assets/logo.png" alt="be flawless">
-    </div>
   <section class="container sub-section">
     <div class="updater">
       <Updater/>
@@ -43,9 +40,5 @@ export default {
   width: 100%;
 }
 
-#usuarios {
-  background: url(../assets/backgrounds/ss-appointments.jpg);
-  background-size: cover;
-}
 
 </style>

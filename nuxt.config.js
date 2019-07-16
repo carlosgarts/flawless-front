@@ -31,6 +31,7 @@ export default {
   plugins: [
     { src: '~/plugins/bus'},
     { src: '~/plugins/vue-datetime.js', ssr: false },
+    { src: '~/plugins/vue-carousel.js', ssr: false }
   ],
   /*
   ** Nuxt.js modules
@@ -39,12 +40,33 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/toast',
     'nuxt-material-design-icons',
     ['nuxt-vue-material', {
       css: true,
       theme: 'null'
     }],
   ],
+
+  /*
+  ** Toast module configuration
+  ** See https://github.com/nuxt-community/modules/tree/master/packages/toast
+  */
+
+  toast: {
+    position: 'top-right',
+    duration: 5000,
+    // register: [ // Register custom toasts
+    //   {
+    //     name: 'my-error',
+    //     message: 'Oops...Something went wrong',
+    //     options: {
+    //       type: 'error'
+    //     }
+    //   }
+    // ]
+  },
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

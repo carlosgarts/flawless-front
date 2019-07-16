@@ -67,6 +67,7 @@ export default {
             id: delId
         });
         if (Response.data.status === 'succes') {
+          app.$toast.success('La cita fue eliminada');
           try {
             const id = this.loggedInUser.id;
             var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {

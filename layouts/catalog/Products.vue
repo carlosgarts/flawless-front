@@ -16,9 +16,9 @@
           <div class="prod-name">
             {{product.name}}
           </div>
-          <div class="details">
+          <!-- <div class="details">
             VER MÁS
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -91,7 +91,8 @@ export default {
   position: relative;
   background-color: white;
   width: 200px;
-  height: 350px;
+  //height: 350px;
+  height: 300px;
   border: 1px solid #FFA09B;
 
   .stock {
