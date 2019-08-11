@@ -1,8 +1,8 @@
 <template>
   <div class="">
-  <section class="container sub-section">
-    <div class="reservations">
-      <Appointments/>
+  <section class="from-top container">
+    <div class="products">
+      <MainBrochure/>
     </div>
   </section>
   <section class="container">
@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import Appointments from '~/layouts/system/Appointments.vue'
+import MainBrochure from '~/layouts/brochure/MainBrochure.vue'
 import FooterFlawless from '~/layouts/partials/footer-flawless.vue'
 
+
 export default {
-  middleware: 'auth',
   components: {
-    Appointments,
+    MainBrochure,
     FooterFlawless
   },
   data: function(){
@@ -28,7 +28,11 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+
+.from-top {
+  align-items: flex-start;
+}
 
 .vdatetime-input {
   display: none;
@@ -41,8 +45,13 @@ export default {
     }
 }
 
-.reservations {
+.products {
   width: 100%;
+}
+
+#usuarios {
+  background: url(../../assets/backgrounds/ss-appointments.jpg);
+  background-size: cover;
 }
 
 </style>

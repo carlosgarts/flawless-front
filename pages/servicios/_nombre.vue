@@ -1,39 +1,32 @@
 <template>
-  <div class="showProducts">
+  <div class="showServices">
   <section class="from-top container">
-    <transition name="expand">
-      <div class="expander" v-if="isActive" v-bind:class="{ active: isActive }"></div>
-    </transition>
-    <div class="go-back">
-      <div class="icon">
-        <i class="material-icons" v-on:click="exitAnim">chevron_left</i>
-      </div>
-    </div>
-
-    <div class="products">
-      <Products/>
+    <div class="services">
+      <ServiceList/>
     </div>
   </section>
   </div>
 </template>
 
 <script>
-import Products from '~/layouts/catalog/Products.vue'
+import MainCatalog from '~/layouts/brochure/MainBrochure.vue'
+import ServiceList from '~/layouts/brochure/Services.vue'
 
 export default {
   components: {
-    Products
+    ServiceList
   },
   data: function(){
     return {
-      isActive: false
+      isActive: false,
+      path: []
     }
   },
   methods: {
     exitAnim: function () {
       setTimeout( ()=>{this.isActive = true} ,10);
-      setTimeout( ()=>{this.$router.push('/productos')} ,500);
-    }
+      setTimeout( ()=>{this.$router.push('/servicios')} ,500);
+    },
   },
   mounted: function () {
     this.isActive = false;
@@ -43,15 +36,13 @@ export default {
 
 <style lang="less" scoped>
 
-.showProducts {
-  background-color: #f9e1df;
+.showServices {
+  //background-color: #f9e1df;
 }
 
 .from-top {
   align-items: flex-start;
-  position: relative;
   overflow: hidden;
-  z-index: 0;
 }
 
 .vdatetime-input {
@@ -65,16 +56,6 @@ export default {
     }
 }
 
-.expander {
-  position: absolute;
-  background-color: white;
-  width: 5000px;
-  height: 5000px;
-  border-bottom-right-radius: 100%;
-  z-index: 2900;
-  border: none;
-  left: 0;
-}
 
 .go-back {
   transition: .5s;
@@ -128,7 +109,7 @@ export default {
   animation: appear 6s ease;
 }
 
-.products {
+.services {
   width: 100%;
 }
 

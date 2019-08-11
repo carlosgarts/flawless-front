@@ -44,7 +44,7 @@
 
 @font-face {
     font-family: 'Salwa';
-    src: url("../assets/fonts/Salwa-reguler.ttf");
+    src: url("../assets/fonts/Watermelon-Script.ttf");
 }
 
 
@@ -91,10 +91,12 @@ html {
 }
 
 .section-banner {
+  position: relative;
   height: 125px;
   background-color: pink;
   display: flex;
   align-items: center;
+  z-index: -1;
 }
 
 #global-banner {
@@ -106,6 +108,7 @@ html {
   width: 100px;
   margin-left: 5%;
   opacity: .5;
+  z-index: 0;
 }
 
 @import "~vue-material/dist/theme/engine"; // Import the theme engine

@@ -1,10 +1,8 @@
 <template>
     <div class="catalog">
-      <div class="pt" v-for="cate in category.data">
-        {{cate.name}}
-      </div>
+      <h1 class="pt" v-for="cate in category.data">{{cate.name}}</h1>
       <div class="sub-pt" v-for="cate in category.data" v-html="cate.description"></div>
-      <div class="prod-grid">
+      <div class="prod-grid" v-if="products.data != '' ">
         <div class="product" v-for="product in products.data">
           <div class="stock">
             {{product.id}}
@@ -13,15 +11,16 @@
           <div class="price">
             {{product.formated_price}}
           </div>
-          <div class="prod-name">
-            {{product.name}}
-          </div>
+          <h2 class="prod-name">{{product.name}}</h2>
           <!-- <div class="details">
             VER MÁS
           </div> -->
-
         </div>
       </div>
+      <div class="no-prod" v-else>
+        Disculpe, estamos realizando inventario.
+      </div>
+      <circle-spin color="#FFA09B" :loading="isLoading" :key="isLoading"></circle-spin>
       <img src="@/assets/backgrounds/goldlinesAsset.svg" alt="Sign">
     </div>
 </template>
@@ -30,6 +29,7 @@
 export default {
   data: function () {
     return {
+      isLoading: true,
       products: [],
       category: []
     }
@@ -40,19 +40,21 @@ export default {
   mounted: async function () {
     try {
       const id = this.$route.params.id;
-      var Category = await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/categories', {
+      var Category = await this.$axios.get('http://store.flawlessrd.com/public/api/categories', {
         params: {
           id: id
         }
       });
       this.category = Category.data;
-      var Products = await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/products', {
+      var Products = await this.$axios.get('http://store.flawlessrd.com/public/api/products', {
         params: {
           category_id: id
         }
       });
       this.products = Products.data;
+      this.isLoading = false;
     } catch (e) {
+      this.isLoading = false;
       console.log(e);
     }
   }
@@ -60,6 +62,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+.no-prod {
+  color: darkgray;
+  font-size: 21px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: auto;
+}
 
 .catalog {
   width: 100%;
@@ -125,6 +135,7 @@ export default {
 
   .prod-name {
     font-family: 'ProximaNova';
+    font-weight: lighter;
     font-size: 16px;
     color: #FFA09B;
   }

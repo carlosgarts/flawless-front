@@ -86,7 +86,7 @@ export default {
       this.allow = false;
       if(this.serviceId != ''){
         var startTime = this.datetime;
-        var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/disponible', {
+        var response = await this.$axios.post('http://store.flawlessrd.com/public/api/disponible', {
             service_id: this.serviceId,
             start_time: startTime.slice(0, 19).replace('T', ' ')
         });
@@ -115,7 +115,7 @@ export default {
       var startTime = this.datetime.slice(0, 19).replace('T', ' ');
       var comment = this.comment;
       try {
-        var Response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/CreateAppointment', {
+        var Response = await this.$axios.post('http://store.flawlessrd.com/public/api/CreateAppointment', {
             customer_id: idUser,
             service_id: this.serviceId,
             start_time: startTime,
@@ -145,7 +145,7 @@ export default {
       var comment = this.comment;
       startTime = startTime.slice(0, 19).replace('T', ' ');
       try {
-        var Response = await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/disponible', {
+        var Response = await this.$axios.get('http://store.flawlessrd.com/public/api/disponible', {
             service_id: idUser,
             star_time: startTime
         });
@@ -161,7 +161,7 @@ export default {
     }
   },
   mounted: async function(){
-    this.groupData =  await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/servicios');
+    this.groupData =  await this.$axios.get('http://store.flawlessrd.com/public/api/servicios');
     this.serviceData = this.groupData.data.servicios;
   }
 }

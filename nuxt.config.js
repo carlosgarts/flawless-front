@@ -31,7 +31,9 @@ export default {
   plugins: [
     { src: '~/plugins/bus'},
     { src: '~/plugins/vue-datetime.js', ssr: false },
-    { src: '~/plugins/vue-carousel.js', ssr: false }
+    { src: '~/plugins/vue-carousel.js', ssr: false },
+    { src: '~/plugins/vue-spinners.js', ssr: false },
+    { src: '~plugins/vue-scrollto.js'}
   ],
   /*
   ** Nuxt.js modules
@@ -78,9 +80,9 @@ export default {
     strategies: {
     local: {
       endpoints: {
-        login: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/login', method: 'post', propertyName: 'token' },
-        logout: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/logout', method: 'get' },
-        user: { url: 'http://localhost/proyectos/new/bagisto-master/public/api/customer/get', method: 'get', propertyName: 'data' }
+        login: { url: 'http://store.flawlessrd.com/public/api/customer/login', method: 'post', propertyName: 'token' },
+        logout: { url: 'http://store.flawlessrd.com/public/api/customer/logout', method: 'get' },
+        user: { url: 'http://store.flawlessrd.com/public/api/customer/get', method: 'get', propertyName: 'data' }
         },
       tokenRequired: true,
       tokenType: 'bearer'

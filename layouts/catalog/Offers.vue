@@ -28,7 +28,7 @@ export default {
   },
   mounted: async function () {
     try {
-      var ofertas = await this.$axios.get('http://localhost/proyectos/new/bagisto-master/public/api/products', {
+      var ofertas = await this.$axios.get('http://store.flawlessrd.com/public/api/products', {
         params: {
           featured: 'true'
         }

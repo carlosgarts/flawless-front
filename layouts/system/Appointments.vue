@@ -63,14 +63,14 @@ export default {
   methods: {
     deleteAppointment: async function(delId) {
       try {
-        var Response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/DeleteAppointment', {
+        var Response = await this.$axios.post('http://store.flawlessrd.com/public/api/DeleteAppointment', {
             id: delId
         });
         if (Response.data.status === 'succes') {
           app.$toast.success('La cita fue eliminada');
           try {
             const id = this.loggedInUser.id;
-            var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+            var Appointments = await this.$axios.post('http://store.flawlessrd.com/public/api/ShowAppointment', {
                 customer_id: id
             });
             this.Appointments = Appointments.data;
@@ -92,7 +92,7 @@ export default {
     updateAppointments: async function() {
       try {
         const id = this.loggedInUser.id;
-        var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+        var Appointments = await this.$axios.post('http://store.flawlessrd.com/public/api/ShowAppointment', {
             customer_id: id
         });
         this.Appointments = Appointments.data;
@@ -112,7 +112,7 @@ export default {
   mounted: async function () {
     try {
       const id = this.loggedInUser.id;
-      var Appointments = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/ShowAppointment', {
+      var Appointments = await this.$axios.post('http://store.flawlessrd.com/public/api/ShowAppointment', {
           customer_id: id
       });
       this.Appointments = Appointments.data;

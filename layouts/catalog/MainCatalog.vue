@@ -62,7 +62,7 @@ export default {
 
 .pt{
 font-weight: bold;
-color: pink;
+color: #FFA09B;
 margin: 10px;
 margin-top: 70px;
 font-size: 65px;
@@ -71,7 +71,7 @@ font-family: 'Salwa';
 }
 
 .sub-pt {
-  color: pink;
+  color: #FFA09B;
   font-family: 'ProximaNova';
   font-weight: bold;
 }

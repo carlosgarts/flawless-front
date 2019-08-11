@@ -64,7 +64,7 @@ export default {
           try {
             var response = [];
             if (this.update.password != '') {
-              response = await this.$axios.put('http://localhost/proyectos/new/bagisto-master/public/api/customer/profile', {
+              response = await this.$axios.put('http://store.flawlessrd.com/public/api/customer/profile', {
                   id: this.loggedInUser.id,
                   email: this.update.email,
                   first_name: this.update.first_name,
@@ -77,7 +77,7 @@ export default {
               });
             }
             else {
-              response = await this.$axios.put('http://localhost/proyectos/new/bagisto-master/public/api/customer/profile', {
+              response = await this.$axios.put('http://store.flawlessrd.com/public/api/customer/profile', {
                   id: this.loggedInUser.id,
                   email: this.update.email,
                   first_name: this.update.first_name,

@@ -5,16 +5,21 @@
       <Updater/>
     </div>
   </section>
+  <section class="container">
+    <FooterFlawless/>
+  </section>
   </div>
 </template>
 
 <script>
 import Updater from '~/layouts/system/Updater.vue'
+import FooterFlawless from '~/layouts/partials/footer-flawless.vue'
 
 export default {
   middleware: 'auth',
   components: {
-    Updater
+    Updater,
+    FooterFlawless
   },
   data: function(){
     return {

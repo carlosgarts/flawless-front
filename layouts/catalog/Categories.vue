@@ -46,15 +46,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  background-color: #FFA09B;
   cursor: pointer;
   &:hover{
-    filter: brightness(1.12);
+    filter: brightness(1.2);
     }
 }
 
 .tibel {
-  color: pink;
+  color: #FFA09B;
   font-family: 'ProximaNova';
   font-weight: bold;
   font-size: 20px;
@@ -65,25 +65,40 @@ export default {
 #unas {
   grid-row-start: 0;
   grid-row-end: 2;
+  background-image: url('../../assets/products/unas.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #cabello {
   grid-row-start: 2;
   grid-row-end: 4;
   //grid-row-start: span 1;
+  background-image: url('../../assets/products/cabello.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #originales {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: span 2;
   //grid-column: 2 / span 2;
+  background-image: url('../../assets/products/originales.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #rostro {
   grid-column-start: 2;
   grid-column-end: 3;
+  background-image: url('../../assets/products/rostro.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #otros {
   grid-column-start: 3;
   grid-column-end: 4;
+  background-image: url('../../assets/products/otros.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 </style>

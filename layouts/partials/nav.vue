@@ -13,11 +13,11 @@
       <ul>
         <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/usuario">{{ loggedInUser.first_name.toUpperCase() }}</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/">PRINCIPAL</nuxt-link></span></li>
-        <li><span @click="toggled = !toggled"><nuxt-link to="/about-me">NOSOTROS</nuxt-link></span></li>
+        <li><span @click="toggled = !toggled"><nuxt-link to="/nosotros">NOSOTROS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/productos">PRODUCTOS</nuxt-link></span></li>
         <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/reservas">RESERVAS</nuxt-link></span></li>
-        <li><span @click="toggled = !toggled"><nuxt-link to="/contact-me">SERVICIOS</nuxt-link></span></li>
-        <li><span @click="toggled = !toggled"><nuxt-link to="/contact-me">CONTACTO</nuxt-link></span></li>
+        <li><span @click="toggled = !toggled"><nuxt-link to="/servicios">SERVICIOS</nuxt-link></span></li>
+        <li><span @click="toggled = !toggled"><a href="#" v-scroll-to="'#footer'">CONTACTO</a></span></li>
         <li>
           <span @click="toggled = !toggled">
             <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
@@ -31,11 +31,11 @@
       <div class="nav-strip">
         <div v-if="isAuthenticated"><nuxt-link to="/usuario">{{ loggedInUser.first_name.toUpperCase() }}</nuxt-link></div>
         <div><nuxt-link to="/">PRINCIPAL</nuxt-link></div>
-        <div><nuxt-link to="/about-me">NOSOTROS</nuxt-link></div>
+        <div><nuxt-link to="/nosotros">NOSOTROS</nuxt-link></div>
         <div><nuxt-link to="/productos">PRODUCTOS</nuxt-link></div>
         <div v-if="isAuthenticated"><nuxt-link to="/reservas">RESERVAS</nuxt-link></div>
-        <div><nuxt-link to="/contact-me">SERVICIOS</nuxt-link></div>
-        <div><nuxt-link to="/contact-me">CONTACTO</nuxt-link></div>
+        <div><nuxt-link to="/servicios">SERVICIOS</nuxt-link></div>
+        <div><a href="#" v-scroll-to="'#footer'">CONTACTO</a></div>
         <div>
           <a @click="logout" v-if="isAuthenticated" >LOGOUT</a>
           <a @click="modalShow = !modalShow" v-else>LOGIN</a>
@@ -48,6 +48,7 @@
       <div class="palms">
         <img id="palm1" class="foreground" src="@/assets/backgrounds/login_fore_1.png" alt="palms">
         <img id="palm2" class="foreground" src="@/assets/backgrounds/login_fore_2.png" alt="palms">
+        <button class="close" type="button" name="button" @click="modalShow = false"><i class="material-icons">clear</i></button>
         <div class="user">
           <div class="tabs">
             <button v-bind:class="{ active: modalMode === 'login' }" type="button" name="button" @click="modalMode= 'login'">Iniciar</button>
@@ -159,7 +160,7 @@ export default {
     async registerUser() {
       if (this.checkForm()) {
           try {
-            var response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/register', {
+            var response = await this.$axios.post('http://store.flawlessrd.com/public/api/customer/register', {
                 email: this.register.email,
                 first_name: this.register.first_name,
                 last_name: this.register.last_name,
@@ -216,7 +217,7 @@ export default {
 
     async recoverPassword() {
     try {
-      response = await this.$axios.post('http://localhost/proyectos/new/bagisto-master/public/api/customer/forgot-password', {
+      response = await this.$axios.post('http://store.flawlessrd.com/public/api/customer/forgot-password', {
           email: this.recover.email
       })
     }
@@ -543,6 +544,28 @@ div.app-screen{
       .foreground {
         width: 150px;
         position: absolute;
+      }
+      .close {
+        display: block;
+        transition: 0.5s;
+        position: absolute;
+        z-index: 105;
+        right: 13px;
+        top: 15px;
+        background: none;
+        border: none;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        cursor: pointer;
+        .material-icons {
+          font-size: 40px;
+        }
+        &:hover {
+          color: gray;
+        }
+        @media (min-width: 762px) {
+          display: none;
+        }
       }
    }
    .user {

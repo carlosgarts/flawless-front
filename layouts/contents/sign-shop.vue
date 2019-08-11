@@ -50,7 +50,7 @@ export default {
 .sign {
   transition: .5s;
   width: 100%;
-  height: 350px;
+  height: 200px;
   display: flex;
   margin: 0;
   padding: 0;
@@ -59,6 +59,9 @@ export default {
   &:hover{
     -webkit-animation: filter-animation 15s infinite;
     animation: filter-animation 15s infinite;
+    }
+  @media (min-width: 650px) {
+      height: 350px;
     }
   img {
     position: absolute;
@@ -72,7 +75,7 @@ export default {
 }
 
 .text {
-  position: relative;
+  position: absolute;
   top: 35px;
   left: 35px;
   display: flex;
@@ -85,7 +88,6 @@ export default {
   padding: 4px;
   padding-left: 20px;
   padding-right: 20px;
-  max-height: 32px;
   line-height: 1.15;
   @media (min-width: 780px) {
     font-size: 2em;
