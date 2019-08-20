@@ -50,13 +50,17 @@ font-weight: bold;
 color: #FFA09B;
 margin: 10px;
 margin-top: 70px;
-font-size: 65px;
-height: 50px;
+font-size: 40px;
+//height: 50px;
 font-family: 'Salwa';
-line-height: 70px;
-height: 150px;
+line-height: 50px;
+//height: 150px;
+@media (min-width: 450px) {
+  line-height: 70px;
+  font-size: 65px;
+}
 @media (min-width: 520px) {
-  height: 80px;
+  margin-bottom: 25px;
   }
 }
 

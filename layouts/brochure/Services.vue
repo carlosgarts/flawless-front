@@ -4,7 +4,7 @@
       <!-- <div class="gradient"></div> -->
       <div class="title-box">
         <h1 class="st">{{$route.params.nombre.split('-').join(' ')}}</h1>
-        <img class="subrayado" src="@/assets/subrayado.svg">
+        <!-- <img class="subrayado" src="@/assets/subrayado.svg"> -->
         <div v-for="group in filterGroup" class="sub-st">{{group.description}}</div>
       </div>
       <div class="service-grid">
@@ -102,16 +102,16 @@ export default {
   grid-column-gap: 25px;
   grid-auto-flow: row;
   div {
-    &:nth-child(1) {
-      border-top: dotted 5px #FFA09B;
-    }
+    // &:nth-child(1) {
+    //   border-top: dotted 5px #FFA09B;
+    // }
   }
   @media (min-width: 680px) {
     grid-template-columns: 50% 50%;
     div {
-      &:nth-child(2) {
-        border-top: dotted 5px #FFA09B;
-      }
+      // &:nth-child(2) {
+      //   border-top: dotted 5px #FFA09B;
+      // }
     }
   }
 }
@@ -120,7 +120,8 @@ export default {
   padding: 20px;
   border-bottom: dotted 5px #FFA09B;
   position: relative;
-  color: #FFA09B;
+  //color: #FFA09B;
+  color: gray;
   h2{
     text-align: left;
     //font-family: 'Salwa';
@@ -141,8 +142,9 @@ export default {
   .advice {
     text-decoration: underline;
     margin-top: 25px;
-    color: #FFA09B;
+    //color: #FFA09B;
     font-weight: bold;
+    color: gray;
   }
   .price {
     position: absolute;
@@ -150,7 +152,8 @@ export default {
     bottom: 20px;
     font-weight: bold;
     font-size: 25px;
-    color: #FFA09B;
+    //color: #FFA09B;
+    color: gray;
   }
 }
 
@@ -177,11 +180,13 @@ text-align: center;
   margin-left: auto;
   margin-right: auto;
   align-self: flex-start;
-  margin-top: 15px;
+  margin-top: 50px;
   //border: dotted #FFF 7px;
   @media (min-width: 650px) {
+    margin-top: 15px;
     margin: 25px;
     padding: 30px;
+    margin-left: 100px
   }
 }
 

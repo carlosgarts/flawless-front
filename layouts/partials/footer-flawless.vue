@@ -11,10 +11,12 @@
         </div>
         <div class="ent">
           <img src="@/assets/brands/whatsapp.png" alt="instagram">
+          <h5>WHATSAPP</h5>
           <h4 class="contact-info">+1 (829) 641 3355</h4>
         </div>
         <div class="ent">
           <img src="@/assets/brands/email.png" alt="instagram">
+          <h5>CORREO</h5>
           <h4 class="contact-info">infoflawless@gmail.com</h4>
         </div>
         <div class="ent">
@@ -83,8 +85,15 @@
     }
 
     .socials {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr;
+      @media (min-width: 350px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (min-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+      }
     }
 
     .ent {

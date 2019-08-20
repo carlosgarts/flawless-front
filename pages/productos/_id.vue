@@ -48,6 +48,7 @@ export default {
 }
 
 .from-top {
+  max-width: 100%;
   align-items: flex-start;
   position: relative;
   overflow: hidden;

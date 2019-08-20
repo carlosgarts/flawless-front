@@ -65,9 +65,12 @@ font-weight: bold;
 color: #FFA09B;
 margin: 10px;
 margin-top: 70px;
-font-size: 65px;
+font-size: 40px;
 height: 50px;
 font-family: 'Salwa';
+@media (min-width: 450px) {
+  font-size: 65px;
+}
 }
 
 .sub-pt {

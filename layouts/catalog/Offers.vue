@@ -1,10 +1,10 @@
 <template>
-  <div class="offer-corrousel">
+  <div class="offer-corrousel" v-if="filterOffers.length > 0">
     <div class="offers">
       PRODUCTOS EN OFERTA
     </div>
     <carousel :perPageCustom="[[400, 2], [768, 3], [1024, 4]]" :paginationEnabled="true" paginationActiveColor="#FFA09B">
-      <slide v-for="oferta in ofertas.data" v-if="oferta.special_price">
+      <slide v-for="oferta in filterOffers">
         <div class="offer-prod">
           <img class="prod-img" :src="oferta.base_image.medium_image_url" alt="">
           <div class="price">
@@ -26,6 +26,13 @@ export default {
       ofertas: []
     }
   },
+  computed: {
+    filterOffers: function () {
+          return this.ofertas.filter(item => {
+            return item.special_price != null
+          })
+        },
+  },
   mounted: async function () {
     try {
       var ofertas = await this.$axios.get('http://store.flawlessrd.com/public/api/products', {
@@ -33,7 +40,12 @@ export default {
           featured: 'true'
         }
       });
-      this.ofertas = ofertas.data;
+      if (ofertas.data.data != []) {
+        this.ofertas = ofertas.data.data;
+      }
+      else {
+        this.ofertas = [];
+      }
     } catch (e) {
       console.log(e);
     }
@@ -47,6 +59,8 @@ export default {
     position: relative;
     border: 3px solid #FFA09B;
     width: 90%;
+    min-height: 170px;
+    margin-bottom: 25px;
     .offers {
       position: absolute;
       color: white;

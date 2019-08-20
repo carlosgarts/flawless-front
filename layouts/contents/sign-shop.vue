@@ -89,7 +89,11 @@ export default {
   padding-left: 20px;
   padding-right: 20px;
   line-height: 1.15;
-  @media (min-width: 780px) {
+  @media (min-width: 1200px) {
+    font-size: 1.5em;
+    max-height: 45px;
+  }
+  @media (min-width: 1600px) {
     font-size: 2em;
     max-height: 45px;
   }

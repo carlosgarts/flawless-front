@@ -1,20 +1,20 @@
 <template>
   <div class="catg-grid">
-    <div id="unas" class="selector" v-on:click="$router.push('/productos/2')">
+    <nuxt-link id="unas" class="selector" to="/productos/2">
       <div class="tibel">UÑAS </div>
-    </div>
-    <div id="cabello" class="selector" v-on:click="$router.push('/productos/3')">
+    </nuxt-link>
+    <nuxt-link id="cabello" class="selector" to="/productos/3">
       <div class="tibel">CABELLO</div>
-    </div>
-    <div id="originales" class="selector" v-on:click="$router.push('/productos/4')">
+    </nuxt-link>
+    <nuxt-link id="originales" class="selector" to="/productos/4">
       <div class="tibel">PRODUCTOS FLAWLESS</div>
-    </div>
-    <div id="rostro" class="selector" v-on:click="$router.push('/productos/5')">
+    </nuxt-link>
+    <nuxt-link id="rostro" class="selector" to="/productos/5">
       <div class="tibel">ROSTROS</div>
-    </div>
-    <div id="otros" class="selector" v-on:click="$router.push('/productos/6')">
+    </nuxt-link>
+    <nuxt-link id="otros" class="selector" to="/productos/6">
       <div class="tibel">OTROS</div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 
@@ -48,9 +48,9 @@ export default {
   align-items: center;
   background-color: #FFA09B;
   cursor: pointer;
-  &:hover{
-    filter: brightness(1.2);
-    }
+  // &:hover{
+  //   filter: brightness(1.2);
+  //   }
 }
 
 .tibel {

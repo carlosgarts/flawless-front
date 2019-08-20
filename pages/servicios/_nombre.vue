@@ -1,6 +1,15 @@
 <template>
   <div class="showServices">
   <section class="from-top container">
+    <transition name="expand">
+      <div class="expander" v-if="isActive" v-bind:class="{ active: isActive }"></div>
+    </transition>
+    <div class="go-back">
+      <div class="icon">
+        <i class="material-icons" v-on:click="exitAnim">chevron_left</i>
+      </div>
+    </div>
+
     <div class="services">
       <ServiceList/>
     </div>
@@ -43,6 +52,8 @@ export default {
 .from-top {
   align-items: flex-start;
   overflow: hidden;
+  position: relative;
+  z-index: 0;
 }
 
 .vdatetime-input {
@@ -54,6 +65,17 @@ export default {
       min-height: calc(100vh - 150px);
       grid-template-columns: 55% 45%;
     }
+}
+
+.expander {
+  position: absolute;
+  background-color: white;
+  width: 5000px;
+  height: 5000px;
+  border-bottom-right-radius: 100%;
+  z-index: 2900;
+  border: none;
+  left: 0;
 }
 
 

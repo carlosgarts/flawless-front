@@ -64,9 +64,9 @@ export default {
   @media (min-width: 900px) {
     min-height: 320px;
     }
-  &:hover{
-    filter: brightness(1.2);
-    }
+  // &:hover{
+  //   filter: brightness(1.2);
+  //   }
 }
 
 .tibel {

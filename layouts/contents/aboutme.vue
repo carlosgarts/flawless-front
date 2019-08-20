@@ -22,7 +22,7 @@
           aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
           nostrud exerci tation ullamcor
         </p>
-        <p class="more">VER MAS</p>
+        <p class="more"><nuxt-link to="/nosotros">VER MAS</nuxt-link></p>
       </div>
     </div>
   </div>
@@ -122,6 +122,12 @@ export default {
       color: pink;
       font-size: 1.5em;
       cursor: pointer;
+      a {
+        color: pink;
+        &:hover {
+          color: gold;
+        }
+      }
     }
   }
 }
