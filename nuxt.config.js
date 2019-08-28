@@ -80,9 +80,9 @@ export default {
     strategies: {
     local: {
       endpoints: {
-        login: { url: 'http://store.flawlessrd.com/public/api/customer/login', method: 'post', propertyName: 'token' },
-        logout: { url: 'http://store.flawlessrd.com/public/api/customer/logout', method: 'get' },
-        user: { url: 'http://store.flawlessrd.com/public/api/customer/get', method: 'get', propertyName: 'data' }
+        login: { url: 'https://store.flawlessrd.com/public/api/customer/login', method: 'post', propertyName: 'token' },
+        logout: { url: 'https://store.flawlessrd.com/public/api/customer/logout', method: 'get' },
+        user: { url: 'https://store.flawlessrd.com/public/api/customer/get', method: 'get', propertyName: 'data' }
         },
       tokenRequired: true,
       tokenType: 'bearer'

@@ -2,6 +2,7 @@
   <div class="">
   <section class="container">
     <h1 class="amt">Acerca de Nosotros</h1>
+    <img class="side-img" src="~/assets/about-me/makeup-girl.png" alt="makeup" title="makeup flawless">
     <div id="nosotros">
       <div class="about">
         <p>Desde nuestra apertura en el año 2016, hemos resaltado la importancia de nuestros <strong class="black">#flawlesslovers</strong> ofreciendo un excelente servicio que nos ha posicionado ampliamente en el mercado.</p>
@@ -19,7 +20,7 @@
         <p>Somos un lugar en donde encuentras todo lo que necesitas en cuanto a belleza desde productos hasta servicios . Te pones bella y te haces todo lo que necesitas en un solo lugar con alta calidad.</p>
       </div>
     </div>
-    <img class="side-img" src="~/assets/about-me/makeup-girl.png" alt="makeup" title="makeup flawless">
+    <!-- <img class="side-img" src="~/assets/about-me/makeup-girl.png" alt="makeup" title="makeup flawless"> -->
   </section>
   <section class="container">
     <FooterFlawless/>
@@ -69,9 +70,15 @@ export default {
     margin-top: 25px;
     //margin-left: %;
     line-height: 25px;
+    @media (min-width: 650px) {
+      width: 70%;
+      grid-template-columns: 1fr;
+      align-self: flex-end;
+      margin-right: 5%;
+    }
     @media (min-width: 900px) {
       margin-top: 70px;
-      width: 70%;
+      //width: 70%;
       grid-template-columns: auto auto;
       align-self: flex-end;
       margin-right: 5%;
@@ -79,37 +86,62 @@ export default {
   }
 
   .values {
+    h3 {
+      color: #777777;
+    }
     p {
       margin-bottom: 5%;
+      color: #777777;
     }
   }
 
   .side-img {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    display: block;
+    position: static;
     z-index: -1;
-    opacity: 0.2;
-    max-width: 400px;
+    opacity: 1;
+    max-width: 80%;
+    align-self: flex-start;
+    @media (min-width: 650px) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      max-width: 25%;
+    }
     @media (min-width: 900px) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
       max-width: 25%;
       opacity: 1;
     }
   }
 
+  .girl-background{
+     background: url("../assets/about-me/makeup-girl2.png") no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     @media (min-width: 900px) {
+       background-image: none;
+     }
+  }
+
   .amt{
   font-family: 'ProximaNova';
-  font-weight: bold;
   color: #FFA09B;
   margin: 25px;
-  font-size: 65px;
-  //height: 50px;
+  font-size: 50px;
   font-family: 'Salwa';
-  line-height: 60px;
+  line-height: 45px;
+  font-weight: normal;
+  @media (min-width: 450px) {
+    line-height: 60px;
+    font-size: 65px;
+  }
   }
 
   .black {
-    color: black;
+    color: #777777;
   }
 
   .nss {

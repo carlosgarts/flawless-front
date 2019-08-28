@@ -21,6 +21,7 @@
 import Products from '~/layouts/catalog/Products.vue'
 
 export default {
+  scrollToTop: true,
   components: {
     Products
   },

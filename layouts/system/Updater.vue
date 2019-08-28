@@ -182,7 +182,7 @@ export default {
 .amt{
 font-family: 'ProximaNova';
 font-weight: bold;
-color: pink;
+color: #FFA09B;
 margin: 10px;
 font-size: 40px;
 //height: 50px;
@@ -195,7 +195,7 @@ form {
   max-width: 700px;
   z-index: 103;
   button {
-    background-color: pink;
+    background-color: #FFA09B;
     padding: 5px;
     padding-left: 25px;
     padding-right: 25px;

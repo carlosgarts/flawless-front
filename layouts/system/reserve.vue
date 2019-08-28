@@ -237,7 +237,7 @@ export default {
 .speed-dial {
   height: 53px;
   width: 53px;
-  background-color: pink;
+  background-color: #FFA09B;
   display: flex;
   align-items: center;
   justify-content: center;

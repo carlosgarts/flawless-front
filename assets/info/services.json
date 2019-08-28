@@ -4,7 +4,7 @@
             "id": 1,
             "name": "Flawless Makeup",
             "description": "Maquillaje",
-            "image": "https://res.cloudinary.com/app-media-group/image/upload/v1562834396/makeup-img_bm0cst.jpg",
+            "image": "https://flawlessrd.com/static/servicios/flawless-makeup.jpg",
             "created_at": "2019-07-23 22:19:11",
             "updated_at": "2019-07-23 22:19:11",
             "deleted_at": null
@@ -13,7 +13,7 @@
             "id": 2,
             "name": "Flawless Brows",
             "description": "Cejas",
-            "image": "http://www.niccbeauty.com/wp-content/uploads/2018/10/professional-makeup-services-in-udaipur.jpg",
+            "image": "https://flawlessrd.com/static/servicios/flawless-brows.jpg",
             "created_at": "2019-07-23 22:19:39",
             "updated_at": "2019-07-23 22:19:39",
             "deleted_at": null
@@ -22,7 +22,7 @@
             "id": 3,
             "name": "Flawless Lashes",
             "description": "Pestañas",
-            "image": "https://atusaludenlinea.com/wp-content/uploads/2019/04/Cejas-2-1200x640.jpg",
+            "image": "https://flawlessrd.com/static/servicios/flawless-lashes.jpg",
             "created_at": "2019-07-23 22:20:17",
             "updated_at": "2019-07-23 22:20:17",
             "deleted_at": null
@@ -31,7 +31,7 @@
             "id": 4,
             "name": "Faciales",
             "description": "Faciales",
-            "image": "https://www.thebeautyeffect.com/wp-content/uploads/2017/07/Guia-de-faciales-en-la-CDMX_secundaria.jpg",
+            "image": "https://flawlessrd.com/static/servicios/faciales.jpg",
             "created_at": "2019-07-23 22:32:30",
             "updated_at": "2019-07-23 22:32:30",
             "deleted_at": null
@@ -40,7 +40,7 @@
             "id": 5,
             "name": "Hair Flawless",
             "description": "Cabello",
-            "image": "https://www.diariodenavarra.es/uploads/blogs/momentos-para-cuidarte/files/2016/12/Rutina_de_belleza_por_donde_empiezo_blog_momentos_para_cuidarte.jpg.jpg",
+            "image": "https://flawlessrd.com/static/servicios/hair-flawless.jpg",
             "created_at": "2019-07-23 22:33:04",
             "updated_at": "2019-07-23 22:33:04",
             "deleted_at": null
@@ -49,7 +49,7 @@
             "id": 6,
             "name": "SPA",
             "description": "Servicios Spa",
-            "image": "https://media.istockphoto.com/photos/spa-treatment-set-picture-id856952836?k=6&m=856952836&s=612x612&w=0&h=SOBOS19NkClUp1bE2WifuH_WpQmGps-YaNU6JG7ym2Y=",
+            "image": "https://flawlessrd.com/static/servicios/spa.jpg",
             "created_at": "2019-07-23 22:45:01",
             "updated_at": "2019-07-23 22:45:01",
             "deleted_at": null
@@ -58,7 +58,7 @@
             "id": 7,
             "name": "Flawless Wax Room",
             "description": "Depilado con cera",
-            "image": "https://nationalpostcom.files.wordpress.com/2018/09/gettyimages-75407877.jpg?quality=80&strip=all&w=780",
+            "image": "https://flawlessrd.com/static/servicios/wax-room.jpg",
             "created_at": "2019-07-23 22:46:03",
             "updated_at": "2019-07-23 22:46:03",
             "deleted_at": null
@@ -67,7 +67,7 @@
             "id": 8,
             "name": "Tratamientos",
             "description": "Tratamientos de Hidratación y reconstrucción profunda",
-            "image": "https://www.thebeautyeffect.com/wp-content/uploads/2017/07/Guia-de-faciales-en-la-CDMX_secundaria.jpg",
+            "image": "https://flawlessrd.com/static/servicios/tratamientos.jpg",
             "created_at": "2019-07-23 22:47:37",
             "updated_at": "2019-07-23 22:47:37",
             "deleted_at": null
@@ -76,7 +76,7 @@
             "id": 9,
             "name": "Color Bar",
             "description": "Color",
-            "image": "https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/8c64fb12-57d8-49dd-a288-75698bddefa7",
+            "image": "https://flawlessrd.com/static/servicios/color-bar.jpg",
             "created_at": "2019-07-23 22:49:31",
             "updated_at": "2019-07-23 22:49:31",
             "deleted_at": null
@@ -85,7 +85,7 @@
             "id": 10,
             "name": "Cortes",
             "description": "Cortes de Cabello",
-            "image": "https://loreal-dam-front-corp-sp-cdn.damdy.com/ressources/afile/176156-2bed4-picture_photo-ambicion.jpg",
+            "image": "https://flawlessrd.com/static/servicios/cortes.jpg",
             "created_at": "2019-07-23 22:49:52",
             "updated_at": "2019-07-23 22:49:52",
             "deleted_at": null
@@ -94,7 +94,7 @@
             "id": 11,
             "name": "Flawless Nails",
             "description": "Uñas",
-            "image": "http://cdn2.actitudfem.com/media/files/styles/large_auto/public/images/2018/10/disenos-unas-rosa-negro.jpg",
+            "image": "https://flawlessrd.com/static/servicios/flawless-nails.jpg",
             "created_at": "2019-07-23 22:51:34",
             "updated_at": "2019-07-23 22:51:34",
             "deleted_at": null
@@ -103,7 +103,7 @@
             "id": 12,
             "name": "Pintura de Uñas",
             "description": "*Todas nuestras pinturas incluyen DRY mani o pedi en seco que consta de limado remoción total de cutícula y exfoliación. Esto para preparar la cama de la uña para la pintura. El resultado es un acabado más impecable y duración óptima de la pintura.",
-            "image": "https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/8c64fb12-57d8-49dd-a288-75698bddefa7",
+            "image": "https://flawlessrd.com/static/servicios/pintura-de-uñas.jpg",
             "created_at": "2019-07-23 22:52:33",
             "updated_at": "2019-07-23 22:52:33",
             "deleted_at": null
@@ -112,7 +112,7 @@
             "id": 13,
             "name": "Plus de Spa",
             "description": "Parafinas y Colagenos",
-            "image": "https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/8c64fb12-57d8-49dd-a288-75698bddefa7",
+            "image": "https://flawlessrd.com/static/servicios/plus-spa.jpg",
             "created_at": "2019-07-23 22:53:58",
             "updated_at": "2019-07-23 22:53:58",
             "deleted_at": null
@@ -121,7 +121,7 @@
             "id": 14,
             "name": "Resina Bar",
             "description": "Resinas",
-            "image": "https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/8c64fb12-57d8-49dd-a288-75698bddefa7",
+            "image": "https://flawlessrd.com/static/servicios/resina-bar.jpg",
             "created_at": "2019-07-23 22:54:24",
             "updated_at": "2019-07-23 22:54:24",
             "deleted_at": null

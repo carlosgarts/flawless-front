@@ -54,6 +54,7 @@ font-size: 40px;
 //height: 50px;
 font-family: 'Salwa';
 line-height: 50px;
+font-weight: unset;
 //height: 150px;
 @media (min-width: 450px) {
   line-height: 70px;

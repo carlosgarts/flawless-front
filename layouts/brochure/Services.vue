@@ -10,12 +10,12 @@
       <div class="service-grid">
         <div class="service" v-for="servicio in filterService">
           <h2>{{servicio.name}}</h2>
-          <p>{{servicio.description}}</p>
+          <p class="description">{{servicio.description}}</p>
           <p v-if="servicio.available > 0" class="advice">Cita previa requerida.</p>
           <div class="price">{{servicio.price}}$</div>
         </div>
       </div>
-      <img class="side-img" src="@/assets/backgrounds/nails.png" alt="makeup" title="makeup flawless">
+      <!-- <img class="side-img" src="@/assets/backgrounds/nails.png" alt="makeup" title="makeup flawless"> -->
       <img class="vect" src="@/assets/backgrounds/goldlinesAsset.svg" alt="Sign">
     </div>
 </template>
@@ -57,13 +57,13 @@ export default {
   mounted: async function () {
     try {
       const id = this.$route.params.id;
-      var Category = await this.$axios.get('http://store.flawlessrd.com/public/api/categories', {
+      var Category = await this.$axios.get('https://store.flawlessrd.com/public/api/categories', {
         params: {
           id: id
         }
       });
       this.category = Category.data;
-      var Products = await this.$axios.get('http://store.flawlessrd.com/public/api/products', {
+      var Products = await this.$axios.get('https://store.flawlessrd.com/public/api/products', {
         params: {
           category_id: id
         }
@@ -139,9 +139,11 @@ export default {
       font-size: 20px;
     }
   }
+  .description {
+    margin-bottom: 25px;
+  }
   .advice {
     text-decoration: underline;
-    margin-top: 25px;
     //color: #FFA09B;
     font-weight: bold;
     color: gray;

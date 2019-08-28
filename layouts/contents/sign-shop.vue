@@ -8,7 +8,7 @@
       <img src="@/assets/promotions/02.jpg" alt="Sign">
       <div class="text">RESERVA TU CITA</div>
     </div>
-    <div class="sign" v-on:click="openRegister" v-else>
+    <div class="sign" id="gift" v-on:click="openRegister" v-else>
       <img src="@/assets/promotions/02.jpg" alt="Sign">
       <div class="text">REGISTRATE Y LLEVA UN REGALO</div>
     </div>
@@ -39,6 +39,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#gift {
+  @media (max-width: 780px) {
+      grid-row: 1 / span 1;
+      grid-column: 1 / span 1;
+    }
+}
+
 .sign-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -56,6 +63,8 @@ export default {
   padding: 0;
   position: relative;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
   &:hover{
     -webkit-animation: filter-animation 15s infinite;
     animation: filter-animation 15s infinite;
@@ -76,19 +85,26 @@ export default {
 
 .text {
   position: absolute;
-  top: 35px;
-  left: 35px;
-  display: flex;
   color: pink;
   background-color: white;
-  width: auto;
-  max-width: 500px;
-  font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1.1em;
   padding: 4px;
-  padding-left: 20px;
-  padding-right: 20px;
-  line-height: 1.15;
+  text-align: center;
+  margin: 10px;
+  @media (min-width: 370px) {
+    margin: 0;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    display: flex;
+    width: auto;
+    max-width: 500px;
+    font-weight: 400;
+    font-size: 1.3em;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.15;
+  }
   @media (min-width: 1200px) {
     font-size: 1.5em;
     max-height: 45px;

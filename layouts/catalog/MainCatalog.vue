@@ -7,15 +7,15 @@
     <Categories/>
     <Offers/>
     <img src="@/assets/backgrounds/goldlinesAsset.svg" alt="Sign">
-    <p class="sub-pt">MARCAS ALIADAS</p>
-    <div class="marcas">
+    <!-- <p class="sub-pt">MARCAS ALIADAS</p> -->
+    <!-- <div class="marcas">
       <img id="maybelline" src="@/assets/brands/maybelline.png" alt="Maybelline">
       <img id="milkshake" src="@/assets/brands/milk_shake.png" alt="Milk_Shake">
       <img id="huda" src="@/assets/brands/huda-beauty.png" alt="Huda Beaity">
       <img id="opi" src="@/assets/brands/OPI.png" alt="O.P.I">
       <img id="loreal" src="@/assets/brands/loreal.png" alt="Loreal Paris">
       <img id="mario" src="@/assets/brands/mario-badescu.png" alt="Mario Badescu">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -68,6 +68,7 @@ margin-top: 70px;
 font-size: 40px;
 height: 50px;
 font-family: 'Salwa';
+font-weight: normal;
 @media (min-width: 450px) {
   font-size: 65px;
 }

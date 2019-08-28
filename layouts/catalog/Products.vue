@@ -40,13 +40,13 @@ export default {
   mounted: async function () {
     try {
       const id = this.$route.params.id;
-      var Category = await this.$axios.get('http://store.flawlessrd.com/public/api/categories', {
+      var Category = await this.$axios.get('https://store.flawlessrd.com/public/api/categories', {
         params: {
           id: id
         }
       });
       this.category = Category.data;
-      var Products = await this.$axios.get('http://store.flawlessrd.com/public/api/products', {
+      var Products = await this.$axios.get('https://store.flawlessrd.com/public/api/products', {
         params: {
           category_id: id
         }

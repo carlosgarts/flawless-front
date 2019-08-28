@@ -17,6 +17,7 @@ import FooterFlawless from '~/layouts/partials/footer-flawless.vue'
 
 
 export default {
+  scrollToTop: true,
   components: {
     MainBrochure,
     FooterFlawless

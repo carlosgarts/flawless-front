@@ -138,12 +138,12 @@ export default {
 .amt{
 font-family: 'ProximaNova';
 font-weight: bold;
-color: pink;
+color: #FFA09B;
 margin: 20px;
 //font-size: 20px;
 font-size: 40px;
 height: 50px;
-border-bottom: solid pink 1px;
+border-bottom: solid #FFA09B 1px;
 padding: 10px;
 font-family: 'Salwa';
 }
@@ -243,7 +243,7 @@ li {
     position: absolute;
     pointer-events: none;
     border-color: rgba(136, 183, 213, 0);
-    border-left-color: #ffc9c9;
+    border-left-color: #FFA09B;
     border-width: 25px;
     animation: growUp 0.5s ease;
   }

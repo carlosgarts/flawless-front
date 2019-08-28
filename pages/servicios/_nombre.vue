@@ -22,6 +22,7 @@ import MainCatalog from '~/layouts/brochure/MainBrochure.vue'
 import ServiceList from '~/layouts/brochure/Services.vue'
 
 export default {
+  scrollToTop: true,
   components: {
     ServiceList
   },

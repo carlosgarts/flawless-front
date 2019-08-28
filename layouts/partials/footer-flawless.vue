@@ -6,22 +6,22 @@
       <div class="socials">
         <div class="ent">
           <img src="@/assets/brands/instagram.png" alt="instagram">
-          <h5>INSTAGRAM</h5>
+          <!-- <h5>INSTAGRAM</h5> -->
           <h4 class="contact-info">FLAWLESS</h4>
         </div>
         <div class="ent">
           <img src="@/assets/brands/whatsapp.png" alt="instagram">
-          <h5>WHATSAPP</h5>
+          <!-- <h5>WHATSAPP</h5> -->
           <h4 class="contact-info">+1 (829) 641 3355</h4>
         </div>
         <div class="ent">
           <img src="@/assets/brands/email.png" alt="instagram">
-          <h5>CORREO</h5>
+          <!-- <h5>CORREO</h5> -->
           <h4 class="contact-info">infoflawless@gmail.com</h4>
         </div>
         <div class="ent">
           <img src="@/assets/brands/instagram.png" alt="instagram">
-          <h5>INSTAGRAM</h5>
+          <!-- <h5>INSTAGRAM</h5> -->
           <h4 class="contact-info">LILY</h4>
         </div>
       </div>
@@ -44,7 +44,7 @@
     <p>
       Flawless, C.A. 2010 All rights Reserved Registro No. 8896551121
     </p>
-    <a href="http://www.script-angels.com/">
+    <a href="https://www.script-angels.com/">
       Web Development by Carlos Gamez
     </a>
   </footer>
@@ -59,6 +59,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 2.1vh;
+    margin-top: 25px;
     img {
       width: 150px;
     }

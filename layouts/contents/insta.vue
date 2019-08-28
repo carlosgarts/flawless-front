@@ -68,10 +68,16 @@ export default {
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-      margin-left: 40px;
-      margin-right: 40px;
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      margin-left: 10px;
+      margin-right: 10px;
+      @media (min-width: 400px) {
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
       img {
         width: 100%;
         height: 100%;

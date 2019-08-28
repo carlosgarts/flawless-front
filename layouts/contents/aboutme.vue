@@ -1,26 +1,19 @@
 <template >
   <div id="aboutMe">
     <div class="profile-picture">
-        <img src="@/assets/about-me/profile.jpg" alt="Picture of Lily the CEO">
+        <img src="@/assets/about-me/profile2.jpg" alt="Picture of Lily the CEO">
     </div>
     <div class="profile-content">
       <div>
         <h1 class="title">¡Hola! soy Lily! <span></span> CEO</h1>
         <p class="text">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-          magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-          quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-          ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-          dolor in hendrerit in vulputate velit esse molestie consequat,
-          vel illum dolore eu feugiat nulla facilisis at vero eros et
-          accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi.
+          Hola! Soy Lily Bello, fundadora de Flawless Glam Place y los productos Flawless.
+          Me considero una mujer emprendedora y estoy muy contenta con las cosas que he logrado hasta hoy,
+          sigo dando lo mejor de mi todos los días para seguir creciendo como persona y poder seguir brindadoles a ustedes,
+          FlawlessLovers todo el amor y el profesionalismo que se merecen. 
           <br>
-          Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-          aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-          nostrud exerci tation ullamcor
+          Creo que ser bella no es un lujo, es algo necesario y viene desde adentro,
+          por eso me encanta mi profesión, porque me hace crecer y los hace brillar a ustedes.
         </p>
         <p class="more"><nuxt-link to="/nosotros">VER MAS</nuxt-link></p>
       </div>
@@ -102,6 +95,7 @@ export default {
       text-align: center;
       //text-shadow: 1px 1px 1px gray;
       margin-bottom: 30px;
+      color: #777777;
       span {
         height: 20px;
         border-left: solid black 2px;

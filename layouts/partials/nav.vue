@@ -160,7 +160,7 @@ export default {
     async registerUser() {
       if (this.checkForm()) {
           try {
-            var response = await this.$axios.post('http://store.flawlessrd.com/public/api/customer/register', {
+            var response = await this.$axios.post('https://store.flawlessrd.com/public/api/customer/register', {
                 email: this.register.email,
                 first_name: this.register.first_name,
                 last_name: this.register.last_name,
@@ -217,7 +217,7 @@ export default {
 
     async recoverPassword() {
     try {
-      response = await this.$axios.post('http://store.flawlessrd.com/public/api/customer/forgot-password', {
+      response = await this.$axios.post('https://store.flawlessrd.com/public/api/customer/forgot-password', {
           email: this.recover.email
       })
     }
