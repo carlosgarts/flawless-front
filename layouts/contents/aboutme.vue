@@ -10,7 +10,7 @@
           Hola! Soy Lily Bello, fundadora de Flawless Glam Place y los productos Flawless.
           Me considero una mujer emprendedora y estoy muy contenta con las cosas que he logrado hasta hoy,
           sigo dando lo mejor de mi todos los días para seguir creciendo como persona y poder seguir brindadoles a ustedes,
-          FlawlessLovers todo el amor y el profesionalismo que se merecen. 
+          FlawlessLovers todo el amor y el profesionalismo que se merecen.
           <br>
           Creo que ser bella no es un lujo, es algo necesario y viene desde adentro,
           por eso me encanta mi profesión, porque me hace crecer y los hace brillar a ustedes.
@@ -49,6 +49,7 @@ export default {
       width: 200px;
       height: 200px;
       object-fit: cover;
+      object-position: -20% 0;
       border: solid pink 4px;
       box-shadow: 5px 5px 5px gray;
       margin: 20px;
@@ -56,6 +57,7 @@ export default {
       margin-right: auto;
       border-radius: 50%;
       @media (min-width: 780px) {
+        object-position: 0 0;
         border: solid pink 15px;
         -webkit-border-image: url(../../assets/backgrounds/gold.jpg) 30 round; /* Safari 3.1-5 */
         -o-border-image: url(../../assets/backgrounds/gold.jpg) 30 round; /* Opera 11-12.1 */

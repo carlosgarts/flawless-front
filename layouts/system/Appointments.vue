@@ -2,7 +2,7 @@
   <div class="displayer">
     <div class="re-base">
       <div class="amt">
-        Reservaciones
+        Citas
       </div>
       <ul class="list" v-if="chosenOne != null">
         <li v-for="appointment in Appointments" class="appointment" v-bind:class="{chosenOne: chosenOne.id === appointment.id}" @click="chosenOne = appointment">

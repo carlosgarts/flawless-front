@@ -184,12 +184,12 @@ text-align: center;
   align-self: flex-start;
   margin-top: 50px;
   //border: dotted #FFF 7px;
-  @media (min-width: 650px) {
-    margin-top: 15px;
-    margin: 25px;
-    padding: 30px;
-    margin-left: 100px
-  }
+  // @media (min-width: 650px) {
+  //   margin-top: 15px;
+  //   margin: 25px;
+  //   padding: 30px;
+  //   margin-left: 100px
+  // }
 }
 
 .subrayado {
@@ -216,10 +216,11 @@ text-align: center;
   //margin-top: 20px;
   text-align: center;
   @media (min-width: 650px) {
-    margin-left: 60px;
-    width: 480px;
+    // margin-left: 60px;
+    // width: 480px;
+    margin-top: 30px;
     font-size: 18px;
-    text-align: left;
+    // text-align: left;
   }
 }
 

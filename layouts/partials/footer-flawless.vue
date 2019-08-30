@@ -5,7 +5,7 @@
       <h3>CONTACTANOS</h3>
       <div class="socials">
         <div class="ent">
-          <img src="@/assets/brands/instagram.png" alt="instagram">
+          <a href="https://www.instagram.com/flawlessglamplace/" target="_blank"><img src="@/assets/brands/instagram.png" alt="instagram"></a>
           <!-- <h5>INSTAGRAM</h5> -->
           <h4 class="contact-info">FLAWLESS</h4>
         </div>
@@ -20,7 +20,7 @@
           <h4 class="contact-info">infoflawless@gmail.com</h4>
         </div>
         <div class="ent">
-          <img src="@/assets/brands/instagram.png" alt="instagram">
+          <a href="https://www.instagram.com/lilyflawless_/" target="_blank"><img src="@/assets/brands/instagram.png" alt="instagram"></a>
           <!-- <h5>INSTAGRAM</h5> -->
           <h4 class="contact-info">LILY</h4>
         </div>
@@ -42,7 +42,7 @@
       duis dolore te feugait nulla facilisi.
     </div> -->
     <p>
-      Flawless, C.A. 2010 All rights Reserved Registro No. 8896551121
+      Flawless, SRL 2010 All rights Reserved Registro No. 8896551121
     </p>
     <a href="https://www.script-angels.com/">
       Web Development by Carlos Gamez

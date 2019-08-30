@@ -15,9 +15,9 @@
         <h3>Valores:</h3>
         <p> <strong class="nss">Belleza</strong> / <strong class="nss">Calidad</strong class="nss"> / <strong class="nss">Integridad</strong> / <strong class="nss">Pasión</strong> / <strong class="nss">Amor</strong> / <strong class="nss">Trabajo en equipo.</strong> </p>
         <h3>Visión:</h3>
-        <p>Darnos a conocer por nuestro servicio excelente valorando a estros clientes haciendo de la visita a nuestro local un experiencia inolvidable promoviendo el crecimiento profesional de nuestro team.</p>
+        <p>Ser un lugar distinguido en donde encuentres todo lo que necesitas para ponerte bella, con productos de alta calidad y servicios excelentes.</p>
         <h3>Misión:</h3>
-        <p>Somos un lugar en donde encuentras todo lo que necesitas en cuanto a belleza desde productos hasta servicios . Te pones bella y te haces todo lo que necesitas en un solo lugar con alta calidad.</p>
+        <p>Darnos a conocer por nuestro servicio excelente proporcionando a nuestros clientes una experiencia inolvidable y promoviendo el crecimiento profesional de nuestro team.</p>
       </div>
     </div>
     <!-- <img class="side-img" src="~/assets/about-me/makeup-girl.png" alt="makeup" title="makeup flawless"> -->

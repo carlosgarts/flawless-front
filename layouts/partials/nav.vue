@@ -15,7 +15,7 @@
         <li><span @click="toggled = !toggled"><nuxt-link to="/">PRINCIPAL</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/nosotros">NOSOTROS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><nuxt-link to="/productos">PRODUCTOS</nuxt-link></span></li>
-        <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/reservas">RESERVAS</nuxt-link></span></li>
+        <!-- <li v-if="isAuthenticated"><span @click="toggled = !toggled"><nuxt-link to="/reservas">CITAS</nuxt-link></span></li> -->
         <li><span @click="toggled = !toggled"><nuxt-link to="/servicios">SERVICIOS</nuxt-link></span></li>
         <li><span @click="toggled = !toggled"><a href="#" v-scroll-to="'#footer'">CONTACTO</a></span></li>
         <li>
@@ -33,7 +33,7 @@
         <div><nuxt-link to="/">PRINCIPAL</nuxt-link></div>
         <div><nuxt-link to="/nosotros">NOSOTROS</nuxt-link></div>
         <div><nuxt-link to="/productos">PRODUCTOS</nuxt-link></div>
-        <div v-if="isAuthenticated"><nuxt-link to="/reservas">RESERVAS</nuxt-link></div>
+        <!-- <div v-if="isAuthenticated"><nuxt-link to="/reservas">CITAS</nuxt-link></div> -->
         <div><nuxt-link to="/servicios">SERVICIOS</nuxt-link></div>
         <div><a href="#" v-scroll-to="'#footer'">CONTACTO</a></div>
         <div>

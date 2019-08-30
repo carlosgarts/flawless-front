@@ -2,8 +2,9 @@
     <div>
       <img class="main-logo" src="@/assets/main-logo.png" alt="be flawless">
       <div class="links">
-        <span v-on:click="verify()"><nuxt-link to="/reservas" class="button gold">RESERVAS</nuxt-link></span>      
-        <nuxt-link to="/nosotros" class="button">NOSOTROS</nuxt-link>
+        <!-- <span v-on:click="verify()"><nuxt-link to="/reservas" class="button gold">CITAS</nuxt-link></span> -->
+        <nuxt-link to="/servicios" class="button gold">SERVICIOS</nuxt-link>
+        <nuxt-link to="/nosotros" class="button silver">NOSOTROS</nuxt-link>
       </div>
     </div>
 </template>
@@ -47,9 +48,19 @@ export default {
   border: 2px solid white;
   color: white;
   text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+  padding: 10px 10px;
+  width: 120px;
+  //margin-left: 15px;
   @media (min-width: 425px) {
+  padding: 10px 30px;
+  width: 140px;
+  }
+}
+
+.silver {
+  margin-top: 25px;
+  @media (min-width: 425px) {
+  margin-top: 0px;
   margin-left: 50px;
   }
 }

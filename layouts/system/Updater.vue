@@ -181,12 +181,17 @@ export default {
 
 .amt{
 font-family: 'ProximaNova';
-font-weight: bold;
+font-weight: normal;
 color: #FFA09B;
-margin: 10px;
+margin: 25px;
 font-size: 40px;
 //height: 50px;
 font-family: 'Salwa';
+line-height: 1;
+@media (min-width: 425px) {
+  margin: 25px;
+  font-size: 60px;
+  }
 }
 
 form {

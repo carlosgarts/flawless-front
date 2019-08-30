@@ -5,7 +5,7 @@
       <div class="map">
 
       </div>
-      <a href="https://goo.gl/maps/cmrzYj64uZX1J5VRA" target="_blank">Ir a Google Maps</a>
+      <a href="https://goo.gl/maps/ZFbKnF84LgrTDbJy8" target="_blank">Ir a Google Maps</a>
   </div>
 </template>
 

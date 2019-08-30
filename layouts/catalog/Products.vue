@@ -160,9 +160,14 @@ font-weight: bold;
 color: #FFA09B;
 margin: 10px;
 margin-top: 70px;
-font-size: 65px;
-height: 50px;
+font-size: 45px;
+//height: 50px;
 font-family: 'Salwa';
+line-height: 1;
+  @media (min-width: 500px) {
+    font-size: 65px;
+    line-height: 1;
+  }
 }
 
 .sub-pt {

@@ -17,7 +17,8 @@
           <md-field>
           <label for="groups">Grupo</label>
           <md-select v-model="groupId" name="groups" id="groups">
-            <md-option v-for="grupo in groupData.data.grupos" :value="grupo.id">{{grupo.name}}</md-option>
+            <md-option v-for="grupo in filterGroups" :value="grupo.id">{{grupo.name}}</md-option>
+            <!-- <md-option v-for="grupo in groupData.data.grupos" :value="grupo.id">{{grupo.name}}</md-option> -->
           </md-select>
         </md-field>
         </div>
@@ -59,6 +60,7 @@ export default {
       comment: '',
       modalShow: false,
       groupData: [],
+      especificGroupData: [],
       serviceData: [],
       groupId: '',
       serviceId: '',
@@ -71,7 +73,12 @@ export default {
     ...mapGetters(['isAuthenticated', 'loggedInUser']),
     filterService: function () {
       return this.serviceData.filter(item => {
-        return item.group_id == this.groupId
+        return (item.group_id == this.groupId && item.available > 0)
+      })
+    },
+    filterGroups: function () {
+      return this.especificGroupData.filter(item => {
+        return (item.reservable == 1)
       })
     }
   },
@@ -162,6 +169,7 @@ export default {
   },
   mounted: async function(){
     this.groupData =  await this.$axios.get('http://store.flawlessrd.com/public/api/servicios');
+    this.especificGroupData = this.groupData.data.grupos;
     this.serviceData = this.groupData.data.servicios;
   }
 }
